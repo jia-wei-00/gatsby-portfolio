@@ -1,12 +1,15 @@
 import React from "react";
 import Navbar from "./Nav";
 import NavMobile from "./NavMobile";
+import { useBreakpoint } from "gatsby-plugin-breakpoints";
 
-const Layout = () => {
+const Layout = ({ children }) => {
+  const breakpoints = useBreakpoint();
+
   return (
     <div>
-      <Navbar />
-      <NavMobile />
+      {breakpoints.md ? <NavMobile /> : <Navbar />}
+      {children}
     </div>
   );
 };

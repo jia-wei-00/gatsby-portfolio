@@ -19,8 +19,9 @@ module.exports = {
   ],
   siteMetadata: {
     title: "Jia Wei",
-    description: "Frontend developer that create simple and beautiful website.",
-    copyright: "Designed &amp; Built by Jia Wei",
+    description:
+      "I'm a frontend developer that create simple and beautiful website.",
+    sign: "I build website",
     contact: "leongjw98@gmail.com",
     whatsapp: "https://wa.link/s1uxa5",
     github: "https://github.com/jia-wei-00",

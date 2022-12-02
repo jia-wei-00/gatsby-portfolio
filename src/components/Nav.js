@@ -18,33 +18,27 @@ export default function Navbar() {
   return (
     <Nav id="myHeader">
       <ul>
-        <a href="#home">
-          <li>
-            <p>1</p>
-            <p>Home</p>
-          </li>
-        </a>
         <a href="#about">
           <li>
-            <p>2</p>
+            <p>1</p>
             <p>About</p>
           </li>
         </a>
         <a href="#skills">
           <li>
-            <p>3</p>
+            <p>2</p>
             <p>Skills</p>
           </li>
         </a>
         <a href="#experience">
           <li>
-            <p>4</p>
+            <p>3</p>
             <p>Experience</p>
           </li>
         </a>
         <a href="#portfolio">
           <li>
-            <p>5</p>
+            <p>4</p>
             <p>portfolio</p>
           </li>
         </a>
