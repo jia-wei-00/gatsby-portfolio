@@ -13,9 +13,9 @@
 }
 
 :root {
-  --color-bg: #1f1f38;
-  --color-bg-variant: #2c2c6c;
-  --color-primary: #4db5ff;
+  --color-bg: rgba(146, 43, 225, 1);
+  --color-bg-variant: rgba(43, 9, 107, 1);
+  --color-primary: rgba(146, 43, 225, 1);
   --color-primary-variant: rgba(77, 181, 255, 0.4);
   --color-white: #fff;
   --color-light: rgba(255, 255, 255, 0.6);
@@ -36,8 +36,8 @@ body {
 body {
   background: radial-gradient(
     at top left,
-    rgba(146, 43, 225, 1) 0%,
-    rgba(43, 9, 107, 1) 100%
+    var(--color-bg) 0%,
+    var(--color-bg-variant) 100%
   );
   background-repeat: no-repeat;
 }

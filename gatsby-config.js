@@ -13,7 +13,9 @@ module.exports = {
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
     "gatsby-plugin-image",
-    `gatsby-plugin-styled-components`,
+    "gatsby-plugin-styled-components",
+    "gatsby-plugin-material-ui",
+    "gatsby-plugin-breakpoints",
   ],
   siteMetadata: {
     title: "Jia Wei",

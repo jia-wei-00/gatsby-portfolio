@@ -16,43 +16,40 @@ export default function Navbar() {
   const { title } = data.site.siteMetadata;
 
   return (
-    <nav>
-      <h1>{title}</h1>
-      <Nav id="myHeader">
-        <ul>
-          <a href="#home">
-            <li>
-              <p>1</p>
-              <p>Home</p>
-            </li>
-          </a>
-          <a href="#about">
-            <li>
-              <p>2</p>
-              <p>About</p>
-            </li>
-          </a>
-          <a href="#skills">
-            <li>
-              <p>3</p>
-              <p>Skills</p>
-            </li>
-          </a>
-          <a href="#experience">
-            <li>
-              <p>4</p>
-              <p>Experience</p>
-            </li>
-          </a>
-          <a href="#portfolio">
-            <li>
-              <p>5</p>
-              <p>portfolio</p>
-            </li>
-          </a>
-        </ul>
-      </Nav>
-    </nav>
+    <Nav id="myHeader">
+      <ul>
+        <a href="#home">
+          <li>
+            <p>1</p>
+            <p>Home</p>
+          </li>
+        </a>
+        <a href="#about">
+          <li>
+            <p>2</p>
+            <p>About</p>
+          </li>
+        </a>
+        <a href="#skills">
+          <li>
+            <p>3</p>
+            <p>Skills</p>
+          </li>
+        </a>
+        <a href="#experience">
+          <li>
+            <p>4</p>
+            <p>Experience</p>
+          </li>
+        </a>
+        <a href="#portfolio">
+          <li>
+            <p>5</p>
+            <p>portfolio</p>
+          </li>
+        </a>
+      </ul>
+    </Nav>
   );
 }
 
