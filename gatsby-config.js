@@ -20,8 +20,8 @@ module.exports = {
   siteMetadata: {
     title: "Jia Wei",
     description:
-      "I'm a frontend developer that create simple and beautiful website.",
-    sign: "I build website",
+      "I'm a front-end developer passionate about building simple, beautiful and responsive website",
+    sign: "I build simple website",
     contact: "leongjw98@gmail.com",
     whatsapp: "https://wa.link/s1uxa5",
     github: "https://github.com/jia-wei-00",

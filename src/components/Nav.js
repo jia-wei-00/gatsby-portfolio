@@ -54,7 +54,7 @@ const Nav = styled.div`
   right: 0;
   height: 100vh;
   transition: var(--transition);
-  background: rgba(56, 56, 56, 0.3);
+  /* background: rgba(56, 56, 56, 0.3); */
   backdrop-filter: blur(15px);
 
   & > ul {

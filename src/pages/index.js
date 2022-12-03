@@ -10,12 +10,12 @@ export default function Home({ data }) {
 
   return (
     <Layout>
-      <Container className="container">
-        <div>
+      <Container>
+        <div className="container">
           <p>Hi, my name is</p>
           <h1>{title}</h1>
-          <h1>{sign}</h1>
-          <h3>{description}</h3>
+          <h2>{sign}</h2>
+          <h4>{description}</h4>
         </div>
       </Container>
     </Layout>
@@ -23,16 +23,12 @@ export default function Home({ data }) {
 }
 
 const Container = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr;
   height: 100vh;
-  justify-content: center;
   align-items: center;
   text-align: right;
   width: 100%;
-
-  & > div {
-    width: 100%;
-  }
 `;
 
 export const query = graphql`
