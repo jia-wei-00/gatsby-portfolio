@@ -4,46 +4,69 @@ import PersonIcon from "@mui/icons-material/Person";
 import WorkHistoryIcon from "@mui/icons-material/WorkHistory";
 import PendingActionsIcon from "@mui/icons-material/PendingActions";
 import ContactMailIcon from "@mui/icons-material/ContactMail";
+import { Link } from "gatsby";
 
 const NavMobile = () => {
   const [active, setActive] = useState("about");
 
+  console.log(active);
+
   return (
-    <Navigation>
-      <a
-        className={active === "about" && "active"}
-        onClick={() => setActive("about")}
-      >
-        <PersonIcon />
-      </a>
-      <a
-        className={active === "work" && "active"}
-        onClick={() => setActive("work")}
-      >
-        <WorkHistoryIcon />
-      </a>
-      <a
-        className={active === "project" && "active"}
-        onClick={() => setActive("project")}
-      >
-        <PendingActionsIcon />
-      </a>
-      <a
-        className={active === "contact" && "active"}
-        onClick={() => setActive("contact")}
-      >
-        <ContactMailIcon />
-      </a>
+    <Navigation section={active}>
+      <Link to="#about">
+        <Section
+          onClick={() => setActive("about")}
+          className={active === "about" && "active"}
+        >
+          <span>
+            <PersonIcon />
+          </span>
+          <span>About</span>
+        </Section>
+      </Link>
+      <Link to="#work">
+        <Section
+          onClick={() => setActive("work")}
+          className={active === "work" && "active"}
+        >
+          <span>
+            <WorkHistoryIcon />
+          </span>
+          <span>Work</span>
+        </Section>
+      </Link>
+      <Link to="#project">
+        <Section
+          onClick={() => setActive("project")}
+          className={active === "project" && "active"}
+        >
+          <span>
+            <PendingActionsIcon />
+          </span>
+          <span>Projects</span>
+        </Section>
+      </Link>
+      <Link to="#contact">
+        <Section
+          onClick={() => setActive("contact")}
+          className={active === "contact" && "active"}
+        >
+          <span>
+            <ContactMailIcon />
+          </span>
+          <span>Contact</span>
+        </Section>
+      </Link>
+      <div className="indicator"></div>
     </Navigation>
   );
 };
 
 export default NavMobile;
 
-const Navigation = styled.nav`
+const Navigation = styled.div`
   background: rgba(0, 0, 0, 0.3);
   width: max-content;
-  display: block;
   padding: 0.7rem 1.7rem;
   z-index: 2;
   position: fixed;
@@ -55,22 +78,101 @@ const Navigation = styled.nav`
   border-radius: 3rem;
   backdrop-filter: blur(15px);
 
-  & > a {
+  .indicator {
+    position: absolute;
+    top: -12%;
+    width: 52px;
+    height: 52px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    transition: 0.5s;
+    transform: ${(props) => {
+      if (props.section === "work") {
+        return `
+          translateX(65px);
+        `;
+      } else if (props.section === "project") {
+        return `
+          translateX(calc(65px * 2));
+        `;
+      } else if (props.section === "contact") {
+        return `
+          translateX(calc(65px * 3));
+        `;
+      }
+    }};
+  }
+
+  .indicator::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -22px;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-top-right-radius: 20px;
+  }
+
+  .indicator::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -22px;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+  }
+`;
+
+const Section = styled.li`
+  display: grid;
+  grid-template-columns: 1fr;
+  position: relative;
+  z-index: 1;
+
+  &.active > span {
+    &:nth-child(2) {
+      opacity: 1;
+      bottom: 0;
+    }
+
+    &:first-child {
+      transform: translateY(-20px);
+    }
+  }
+
+  & > span:first-child {
     background: transparent;
     padding: 0.9rem;
     border-radius: 50%;
     display: flex;
+    justify-content: center;
+    align-items: center;
     color: var(--color-light);
     font-size: 1.1rem;
+    width: 52px;
+    height: 52px;
+    transition: var(--transition);
 
     &:hover {
       background: rgba(0, 0, 0, 0.2);
       color: var(--color-white);
     }
+  }
 
-    &.active {
-      background: var(--color-primary);
-      color: var(--color-bg);
-    }
+  & > span:nth-child(2) {
+    position: absolute;
+    color: rgba(225, 225, 225, 0.7);
+    font-weight: 400;
+    font-size: 0.75em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+    opacity: 0;
+    display: flex;
+    margin-left: 50%;
+    left: 0;
+    bottom: -10px;
+    transform: translateX(-50%);
   }
 `;

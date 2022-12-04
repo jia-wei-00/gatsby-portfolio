@@ -14,10 +14,11 @@
 
 :root {
   --color-bg: rgba(146, 43, 225, 1);
-  --color-bg-variant: rgba(43, 9, 107, 1);
-  --color-primary: rgba(146, 43, 225, 1);
+  --color-bg-variant: rgb(29, 32, 39);
+  --color-primary: rgb(124, 30, 196);
   --color-primary-variant: rgba(77, 181, 255, 0.4);
   --color-white: #fff;
+  --color-lighter: rgba(255, 255, 255, 0.8);
   --color-light: rgba(255, 255, 255, 0.6);
 
   --transition: all 400ms ease;
@@ -35,16 +36,17 @@ body {
   /* max-width: 1600px; */
 }
 body {
-  background: radial-gradient(
+  /* background: radial-gradient(
     at top left,
     var(--color-bg) 0%,
     var(--color-bg-variant) 100%
-  );
+  ); */
+  background: var(--color-bg-variant);
   background-repeat: no-repeat;
 }
 p {
-  margin: 16px auto;
   line-height: 1.5em;
+  color: var(--color-lighter);
 }
 
 /* ================= GENERAL STYLES ================= */
@@ -57,11 +59,13 @@ h1,
 h2,
 h3 {
   font-weight: 500;
+  color: var(--color-lighter);
 }
 
 h4,
 h5 {
   font-weight: 300;
+  color: var(--color-light);
 }
 
 h1 {
@@ -70,6 +74,7 @@ h1 {
 
 h2 {
   font-size: calc(2.5vw + 1.5rem);
+  color: var(--color-light);
 }
 
 section {
