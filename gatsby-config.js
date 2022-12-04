@@ -28,12 +28,31 @@ module.exports = {
     "gatsby-plugin-image",
     "gatsby-plugin-styled-components",
     "gatsby-plugin-material-ui",
-    "gatsby-plugin-breakpoints",
+    {
+      resolve: "gatsby-plugin-breakpoints",
+      options: {
+        queries: {
+          xs: "(max-width: 480px)",
+          sm: "(max-width: 768px)",
+          md: "(max-width: 1024px)",
+          l: "(max-width: 1200px)",
+          xl: "(max-width: 1500px)",
+        },
+      },
+    },
+    `gatsby-plugin-offline`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
         path: `${__dirname}/src/images/`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `about`,
+        path: `${__dirname}/src/about/`,
       },
     },
     {

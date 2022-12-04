@@ -1,25 +1,45 @@
 import React from "react";
-import Navbar from "./Nav";
-import NavMobile from "./NavMobile";
+import styled from "styled-components";
 import { useBreakpoint } from "gatsby-plugin-breakpoints";
-import MobileHeader from "./MobileHeader";
+import { Logo, Navbar, NavMobile, MobileHeader } from "@components";
+import Intro from "./sections/Intro";
 
 const Layout = ({ children }) => {
   const breakpoints = useBreakpoint();
 
   return (
     <div>
-      {breakpoints.md ? (
+      {breakpoints.xl ? (
         <>
           <MobileHeader />
           <NavMobile />
         </>
       ) : (
-        <Navbar />
+        <Wrapper>
+          {/* <Logo /> */}
+          <Intro />
+          <Navbar />
+        </Wrapper>
       )}
       {children}
     </div>
   );
 };
+
+const Wrapper = styled.div`
+  display: flex;
+  position: relative;
+  align-items: center;
+
+  /* & > div:first-child {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+
+    & > div {
+      width: 120px;
+    } 
+  }*/
+`;
 
 export default Layout;

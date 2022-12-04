@@ -1,51 +1,48 @@
+import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
 import styled from "styled-components";
-import { graphql, useStaticQuery } from "gatsby";
-
-const Container = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  height: 100vh;
-  align-items: center;
-  text-align: right;
-  width: 100%;
-
-  & > p {
-    color: var(--color-lighter);
-  }
-
-  & > h2 {
-    margin-bottom: 10px;
-  }
-`;
 
 const About = () => {
   const data = useStaticQuery(graphql`
-    query MyQuery {
-      site {
-        siteMetadata {
-          contact
-          description
-          title
-          sign
-        }
+    query {
+      markdownRemark(frontmatter: { slug: { eq: "about" } }) {
+        html
       }
     }
   `);
 
-  console.log(data.site);
-  const { title, description, contact, sign } = data.site.siteMetadata;
+  const { html } = data.markdownRemark;
 
   return (
-    <Container>
-      <div className="container">
-        <p>Hi, my name is</p>
-        <h1>{title}</h1>
-        <h2>{sign}</h2>
-        <h4>{description}</h4>
+    <Container className="container">
+      <h2 className="numbered-heading">About Me</h2>
+      <div>
+        <img></img>
+        <Desc dangerouslySetInnerHTML={{ __html: html }} />
       </div>
     </Container>
   );
 };
+
+const Container = styled.div`
+  display: grid;
+
+  & > h2 {
+    display: flex;
+  }
+
+  & > div {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
+`;
+
+const Desc = styled.div`
+  text-align: justify;
+`;
 
 export default About;
