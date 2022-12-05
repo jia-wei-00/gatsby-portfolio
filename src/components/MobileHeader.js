@@ -21,6 +21,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   position: fixed;
+  z-index: 10;
   width: 100%;
   backdrop-filter: blur(15px);
   background: rgba(0, 0, 0, 0.5);

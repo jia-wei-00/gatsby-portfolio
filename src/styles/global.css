@@ -163,12 +163,18 @@ section > h4 {
   color: var(--color-light);
 }
 
+a {
+  position: relative;
+}
+
 .link:after {
+  position: absolute;
   transition: var(--transition);
-  background: none repeat scroll 0 0 var(--color-lighter);
+  background: var(--color-lighter);
   content: "";
   display: block;
   height: 1px;
+  left: 0;
   width: 0;
 }
 

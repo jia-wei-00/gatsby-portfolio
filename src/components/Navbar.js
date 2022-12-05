@@ -104,6 +104,7 @@ const Navbar = () => {
 
 const Nav = styled.div`
   display: flex;
+  z-index: 10;
   top: 0;
   left: 0;
   right: 0;
@@ -167,6 +168,7 @@ const Nav = styled.div`
 const StickyNav = styled.div`
   display: flex;
   justify-content: right;
+  z-index: 10;
   position: fixed;
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(15px);
