@@ -48,6 +48,7 @@ export default function Work() {
 
   return (
     <div className="container">
+      <h2 className="numbered-heading">Working History</h2>
       <Box
         sx={{
           flexGrow: 1,
