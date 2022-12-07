@@ -1,7 +1,7 @@
 ---
 date: "2022-3-08"
 title: "Intern Software Developer"
-company: "W Tech Software"
+company: "W Tech"
 location: "Ipoh, Perak"
 range: "Sep 2021 - Mar 2022"
 url: "https://www.wtech.software/"
