@@ -39,7 +39,7 @@ const About = () => {
     <Container className="container" id="about">
       <h2 className="numbered-heading">About Me</h2>
       <div>
-        <StyledImage image={image} />
+        <StyledImage className="swirl-in-fwd" image={image} />
         <div>
           <Desc dangerouslySetInnerHTML={{ __html: html }} />
           <br />

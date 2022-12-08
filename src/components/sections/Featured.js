@@ -63,9 +63,9 @@ const Featured = () => {
                 <Project className="project">
                   <h3>{title}</h3>
                   <div dangerouslySetInnerHTML={{ __html: html }} />
-                  <ul>
+                  <ul className="tech">
                     {tech.map((tech, i) => {
-                      <li key={i}>{tech}</li>;
+                      return <li key={i}>{tech}</li>;
                     })}
                   </ul>
                   <div className="icon-wrapper">
@@ -94,13 +94,17 @@ const Featured = () => {
 const Image = styled(GatsbyImage)`
   height: 50vh;
   border-radius: 20px;
-  object-position: center top;
   width: 100%;
   transition: var(--transition);
-  filter: grayscale(70%) blur(3px);
-  /* transform: translateX(50px); */
+  filter: grayscale(70%) blur(3px) brightness(40%);
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  left: 0;
 
   @media (max-width: 768px) {
+    position: relative;
+    width: 100%;
     height: 40vw;
     transform: translateY(50px);
   }
@@ -108,7 +112,7 @@ const Image = styled(GatsbyImage)`
 
 const Container = styled.div`
   display: grid;
-  row-gap: 50px;
+  row-gap: 80px;
 
   @media (max-width: 768px) {
     row-gap: 0;
@@ -117,7 +121,7 @@ const Container = styled.div`
 
 const ProjectContainer = styled.div`
   display: grid;
-  grid-template-columns: 5fr 4fr;
+  grid-template-columns: 1fr;
   column-gap: 50px;
   position: relative;
 
@@ -128,14 +132,40 @@ const ProjectContainer = styled.div`
     align-items: center;
   }
 
+  &:nth-of-type(even) {
+    .image {
+      right: 0;
+      left: unset;
+    }
+
+    .project {
+      transform: translateX(40%);
+
+      @media (max-width: 768px) {
+        transform: translateX(0);
+        transform: translateY(-25%);
+      }
+    }
+
+    &:hover {
+      .project {
+        transform: translateX(0);
+      }
+    }
+  }
+
   &:hover {
-    .project,
     .image {
       transform: translateX(0);
     }
 
     .project {
+      transform: translateX(120%);
       box-shadow: 5px 5px 5px 0px var(--color-primary);
+
+      @media (max-width: 768px) {
+        transform: translateX(0);
+      }
     }
 
     .image {
@@ -146,18 +176,23 @@ const ProjectContainer = styled.div`
 
 const Project = styled.div`
   display: grid;
-  justify-content: center;
-  align-items: center;
   column-gap: 10px;
   row-gap: 20px;
-  background-color: var(--color-darkbg);
+  background: linear-gradient(
+    130deg,
+    transparent,
+    var(--color-primary),
+    transparent
+  );
   border: 1px solid var(--color-brighter);
   padding: 20px;
   border-radius: 20px;
   left: 50%;
   transition: var(--transition);
   z-index: 1;
-  transform: translateX(-100px);
+  max-width: 45%;
+  right: 0;
+  transform: translateX(80%);
 
   h3 {
     color: var(--color-white);
@@ -189,10 +224,37 @@ const Project = styled.div`
     }
   }
 
+  .tech {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+    margin: 25px 0 10px;
+    padding: 0;
+    list-style: none;
+
+    li {
+      margin: 0 20px 5px 0;
+      color: var(--color-lighter);
+      font-size: var(--fz-xs);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 768px) {
+      margin: 10px 0;
+
+      li {
+        margin: 0 10px 5px 0;
+        color: var(--color-lighter);
+      }
+    }
+  }
+
   @media (max-width: 768px) {
     margin-top: 20px;
     width: 95%;
-    transform: translateY(-50px);
+    transform: translateY(-25%);
+    max-width: unset;
   }
 `;
 
