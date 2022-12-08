@@ -21,6 +21,7 @@
   --color-lighter: rgba(255, 255, 255, 0.8);
   --color-light: rgba(255, 255, 255, 0.6);
   --color-dull: rgba(255, 255, 255, 0.4);
+  --color-darkbg: #272727;
 
   --ss-xs: 480px;
   --ss-sm: 768px;
