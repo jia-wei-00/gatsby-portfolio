@@ -40,8 +40,6 @@ const Featured = () => {
 
   const projects = data.projects.edges;
 
-  console.log(projects);
-
   return (
     <div className="container">
       <h2 className="numbered-heading">Featured Projects</h2>
@@ -52,7 +50,6 @@ const Featured = () => {
               node.frontmatter;
 
             const html = node.html;
-            console.log(tech);
 
             return (
               <ProjectContainer>
@@ -70,15 +67,15 @@ const Featured = () => {
                   </ul>
                   <div className="icon-wrapper">
                     {github ? (
-                      <a href={github} target="_blank">
+                      <a href={github} target="_blank" rel="noreferrer">
                         <GitHubIcon />
                       </a>
                     ) : (
-                      <a href={video} target="_blank">
+                      <a href={video} target="_blank" rel="noreferrer">
                         <YouTubeIcon />
                       </a>
                     )}
-                    <a href={external} target="_blank">
+                    <a href={external} target="_blank" rel="noreferrer">
                       <OpenInNewIcon />
                     </a>
                   </div>
@@ -138,6 +135,12 @@ const ProjectContainer = styled.div`
       left: unset;
     }
 
+    &:hover {
+      .project {
+        box-shadow: -5px 5px 5px 0px var(--color-primary);
+      }
+    }
+
     .project {
       transform: translateX(40%);
 
@@ -177,7 +180,7 @@ const ProjectContainer = styled.div`
 const Project = styled.div`
   display: grid;
   column-gap: 10px;
-  row-gap: 20px;
+  row-gap: 25px;
   background: linear-gradient(
     130deg,
     transparent,
@@ -229,7 +232,7 @@ const Project = styled.div`
     flex-wrap: wrap;
     position: relative;
     z-index: 2;
-    margin: 25px 0 10px;
+    /* margin: 25px 0 10px; */
     padding: 0;
     list-style: none;
 
@@ -241,7 +244,7 @@ const Project = styled.div`
     }
 
     @media (max-width: 768px) {
-      margin: 10px 0;
+      /* margin: 10px 0; */
 
       li {
         margin: 0 10px 5px 0;

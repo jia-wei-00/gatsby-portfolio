@@ -144,6 +144,7 @@ export default function Work() {
                 </h3>
 
                 <p className="range">{range}</p>
+                <p>{location}</p>
 
                 <Desc dangerouslySetInnerHTML={{ __html: html }} />
               </TabPanel>

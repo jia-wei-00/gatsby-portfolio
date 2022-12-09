@@ -1,6 +1,6 @@
 import * as React from "react";
 import "../styles/global.css";
-import { Layout, Intro, About, Work, Featured } from "@components";
+import { Layout, Intro, About, Work, Featured, Projects } from "@components";
 import { useBreakpoint } from "gatsby-plugin-breakpoints";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -25,6 +25,7 @@ export default function Home() {
         <About />
         <Work />
         <Featured />
+        <Projects />
       </Layout>
     </ThemeProvider>
   );

@@ -9,8 +9,6 @@ import { Link } from "gatsby";
 const NavMobile = () => {
   const [active, setActive] = useState("about");
 
-  console.log(active);
-
   return (
     <Navigation section={active}>
       <Link to="#about">

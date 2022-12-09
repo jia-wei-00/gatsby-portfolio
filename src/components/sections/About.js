@@ -39,7 +39,7 @@ const About = () => {
     <Container className="container" id="about">
       <h2 className="numbered-heading">About Me</h2>
       <div>
-        <StyledImage className="swirl-in-fwd" image={image} />
+        <StyledImage image={image} />
         <div>
           <Desc dangerouslySetInnerHTML={{ __html: html }} />
           <br />
@@ -82,7 +82,6 @@ const Container = styled.div`
       position: relative;
       margin-bottom: 10px;
       padding-left: 20px;
-      font-family: var(--font-mono);
       font-size: var(--fz-xs);
 
       &:before {

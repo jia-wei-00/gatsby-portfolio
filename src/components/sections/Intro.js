@@ -37,7 +37,7 @@ const Intro = () => {
     }
   `);
 
-  const { title, description, contact, sign } = data.site.siteMetadata;
+  const { title, description, sign } = data.site.siteMetadata;
 
   return (
     <Container>

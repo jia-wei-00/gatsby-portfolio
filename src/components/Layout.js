@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import { useBreakpoint } from "gatsby-plugin-breakpoints";
-import { Logo, Navbar, NavMobile, MobileHeader } from "@components";
+import { Navbar, NavMobile, MobileHeader } from "@components";
 import Intro from "./sections/Intro";
 
 const Layout = ({ children }) => {
   const breakpoints = useBreakpoint();
 
   return (
-    <div>
+    <Container>
       {breakpoints.xl ? (
         <>
           <MobileHeader />
@@ -16,13 +16,12 @@ const Layout = ({ children }) => {
         </>
       ) : (
         <Wrapper>
-          {/* <Logo /> */}
           <Intro />
           <Navbar />
         </Wrapper>
       )}
       {children}
-    </div>
+    </Container>
   );
 };
 
@@ -30,16 +29,11 @@ const Wrapper = styled.div`
   display: flex;
   position: relative;
   align-items: center;
+  padding-bottom: 500px;
+`;
 
-  /* & > div:first-child {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-
-    & > div {
-      width: 120px;
-    } 
-  }*/
+const Container = styled.div`
+  padding-bottom: 100px;
 `;
 
 export default Layout;

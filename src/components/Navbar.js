@@ -1,21 +1,10 @@
-import { Link, graphql, useStaticQuery } from "gatsby";
+import { Link } from "gatsby";
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Fade from "react-reveal/Fade";
 import { Logo } from "@components";
 
 const Navbar = () => {
-  const data = useStaticQuery(graphql`
-    query SiteInfo {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `);
-
-  const { title } = data.site.siteMetadata;
   const [sticky, setSticky] = useState(false);
 
   useEffect(() => {
@@ -34,8 +23,6 @@ const Navbar = () => {
       };
     }
   }, [sticky]);
-
-  console.log(sticky, "sticky");
 
   return (
     <>
