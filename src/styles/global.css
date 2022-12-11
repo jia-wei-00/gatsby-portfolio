@@ -40,7 +40,7 @@
 
   --transition: all 0.35s cubic-bezier(0.645, 0.045, 0.355, 1);
 
-  --container-width-lg: 60%;
+  --container-width-lg: 1000px;
   --container-width-md: 75%;
   --container-width-sm: 80%;
 
@@ -50,6 +50,7 @@
 html,
 body {
   min-height: 100%;
+  scroll-behavior: smooth;
 }
 body {
   background: var(--color-bg-variant);
@@ -63,9 +64,20 @@ p {
 
 /* ================= GENERAL STYLES ================= */
 .container {
-  width: var(--container-width-lg);
+  max-width: var(--container-width-lg);
   margin: 5rem auto;
+  /* scroll-margin-top: 15vh; */
 }
+
+/* @media (max-width: 1200px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+} */
 
 h1,
 h2,
@@ -218,9 +230,9 @@ img {
 }
 
 /* ================= MEDIA QUERIES (MEDIUM DEVICES) ================= */
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1400px) {
   .container {
-    width: var(--container-width-md);
+    max-width: var(--container-width-md);
   }
 
   section {
@@ -229,9 +241,9 @@ img {
 }
 
 /* ================= MEDIA QUERIES (SMALL DEVICES) ================= */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   .container {
-    width: var(--container-width-sm);
+    max-width: var(--container-width-sm);
   }
 
   section > h2 {

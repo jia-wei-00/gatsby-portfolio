@@ -4,7 +4,7 @@ import { useBreakpoint } from "gatsby-plugin-breakpoints";
 import { Navbar, NavMobile, MobileHeader } from "@components";
 import Intro from "./sections/Intro";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, section }) => {
   const breakpoints = useBreakpoint();
 
   return (
@@ -12,12 +12,12 @@ const Layout = ({ children }) => {
       {breakpoints.xl ? (
         <>
           <MobileHeader />
-          <NavMobile />
+          <NavMobile section={section} />
         </>
       ) : (
         <Wrapper>
           <Intro />
-          <Navbar />
+          <Navbar section={section} />
         </Wrapper>
       )}
       {children}
@@ -29,7 +29,6 @@ const Wrapper = styled.div`
   display: flex;
   position: relative;
   align-items: center;
-  padding-bottom: 500px;
 `;
 
 const Container = styled.div`

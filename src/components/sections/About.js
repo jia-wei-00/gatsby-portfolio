@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
-const About = () => {
+const About = ({ children }) => {
   const data = useStaticQuery(graphql`
     query {
       markdownRemark(frontmatter: { slug: { eq: "about" } }) {
@@ -37,6 +37,7 @@ const About = () => {
 
   return (
     <Container className="container" id="about">
+      {children}
       <h2 className="numbered-heading">About Me</h2>
       <div>
         <StyledImage image={image} />

@@ -5,16 +5,21 @@ import WorkHistoryIcon from "@mui/icons-material/WorkHistory";
 import PendingActionsIcon from "@mui/icons-material/PendingActions";
 import ContactMailIcon from "@mui/icons-material/ContactMail";
 import { Link } from "gatsby";
+import { useScrollSection } from "react-scroll-section";
 
-const NavMobile = () => {
-  const [active, setActive] = useState("about");
+const NavMobile = ({ section }) => {
+  const aboutSection = useScrollSection("about");
+  const workSection = useScrollSection("work");
+  const projectSection = useScrollSection("project");
+  const contactSection = useScrollSection("contact");
+  const [active, setActive] = useState("");
 
   return (
-    <Navigation section={active}>
-      <Link to="#about">
+    <Navigation section={section}>
+      <Link to="/#about">
         <Section
-          onClick={() => setActive("about")}
-          className={active === "about" && "active"}
+          onClick={aboutSection.onClick}
+          className={aboutSection.selected && "active"}
         >
           <span>
             <PersonIcon />
@@ -22,10 +27,10 @@ const NavMobile = () => {
           <span>About</span>
         </Section>
       </Link>
-      <Link to="#work">
+      <Link to="/#work">
         <Section
-          onClick={() => setActive("work")}
-          className={active === "work" && "active"}
+          onClick={workSection.onClick}
+          className={workSection.selected && "active"}
         >
           <span>
             <WorkHistoryIcon />
@@ -33,10 +38,10 @@ const NavMobile = () => {
           <span>Work</span>
         </Section>
       </Link>
-      <Link to="#project">
+      <Link to="/#project">
         <Section
-          onClick={() => setActive("project")}
-          className={active === "project" && "active"}
+          onClick={projectSection.onClick}
+          className={projectSection.selected && "active"}
         >
           <span>
             <PendingActionsIcon />
@@ -44,10 +49,10 @@ const NavMobile = () => {
           <span>Projects</span>
         </Section>
       </Link>
-      <Link to="#contact">
+      <Link to="/#contact">
         <Section
-          onClick={() => setActive("contact")}
-          className={active === "contact" && "active"}
+          onClick={contactSection.onClick}
+          className={contactSection.selected && "active"}
         >
           <span>
             <ContactMailIcon />

@@ -29,25 +29,25 @@ const Navbar = () => {
       <Fade top>
         <Nav id="myHeader">
           <ul>
-            <Link to="#about" className="link">
+            <Link to="/#about" className="link">
               <li>
                 <p>1</p>
                 <p>About</p>
               </li>
             </Link>
-            <Link to="#work" className="link">
+            <Link to="/#work" className="link">
               <li>
                 <p>2</p>
                 <p>Work</p>
               </li>
             </Link>
-            <Link to="#projects" className="link">
+            <Link to="/#project" className="link">
               <li>
                 <p>3</p>
                 <p>Projects</p>
               </li>
             </Link>
-            <Link to="#contact" className="link">
+            <Link to="/#contact" className="link">
               <li>
                 <p>4</p>
                 <p>Contact</p>
@@ -59,25 +59,25 @@ const Navbar = () => {
       {sticky ? (
         <StickyNav>
           <Logo />
-          <Link to="#about" className="link">
+          <Link to="/#about" className="link">
             <span>1</span>
             <Fade right>
               <span>About</span>
             </Fade>
           </Link>
-          <Link to="#work" className="link">
+          <Link to="/#work" className="link">
             <span>2</span>
             <Fade right>
               <span>Work</span>
             </Fade>
           </Link>
-          <Link to="#projects" className="link">
+          <Link to="/#project" className="link">
             <span>3</span>
             <Fade right>
               <span>Projects</span>
             </Fade>
           </Link>
-          <Link to="#contact" className="link">
+          <Link to="/#contact" className="link">
             <span>4</span>
             <Fade right>
               <span>Contact</span>

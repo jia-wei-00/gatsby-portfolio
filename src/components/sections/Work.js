@@ -61,7 +61,7 @@ const Desc = styled.div`
   }
 `;
 
-export default function Work() {
+export default function Work({ children }) {
   const data = useStaticQuery(graphql`
     query {
       jobs: allMarkdownRemark(
@@ -92,11 +92,12 @@ export default function Work() {
   };
 
   return (
-    <div className="container">
+    <div className="container" id="work">
+      {children}
       <h2 className="numbered-heading">Working History</h2>
       <Box
         sx={{
-          flexGrow: 1,
+          // flexGrow: 1,
           bgcolor: "none",
           display: "grid",
           gridTemplateColumns: "1fr 4fr",

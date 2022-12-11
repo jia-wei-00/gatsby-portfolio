@@ -6,7 +6,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 
-const Featured = () => {
+const Featured = ({ children }) => {
   const data = useStaticQuery(graphql`
     query {
       projects: allMarkdownRemark(
@@ -41,7 +41,8 @@ const Featured = () => {
   const projects = data.projects.edges;
 
   return (
-    <div className="container">
+    <div className="container" id="project">
+      {children}
       <h2 className="numbered-heading">Featured Projects</h2>
       <Container>
         {projects &&

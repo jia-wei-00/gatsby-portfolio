@@ -8,3 +8,4 @@ export { default as Logo } from "./Logo";
 export { default as Work } from "./sections/Work";
 export { default as Featured } from "./sections/Featured";
 export { default as Projects } from "./sections/Projects";
+export { default as Contact } from "./sections/Contact";

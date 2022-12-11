@@ -10,6 +10,14 @@ const Container = styled.div`
   text-align: right;
   width: 100%;
 
+  & > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    row-gap: 20px;
+  }
+
   & > p {
     color: var(--color-lighter);
   }

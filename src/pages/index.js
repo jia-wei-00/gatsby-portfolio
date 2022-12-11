@@ -1,8 +1,17 @@
-import * as React from "react";
+import React, { useState } from "react";
 import "../styles/global.css";
-import { Layout, Intro, About, Work, Featured, Projects } from "@components";
+import {
+  Layout,
+  Intro,
+  About,
+  Work,
+  Featured,
+  Projects,
+  Contact,
+} from "@components";
 import { useBreakpoint } from "gatsby-plugin-breakpoints";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { ScrollingProvider, Section } from "react-scroll-section";
 
 const theme = createTheme({
   palette: {
@@ -22,10 +31,19 @@ export default function Home() {
     <ThemeProvider theme={theme}>
       <Layout>
         {breakpoints.xl ? <Intro /> : null}
-        <About />
-        <Work />
-        <Featured />
-        <Projects />
+        <Section id="about">
+          <About />
+        </Section>
+        <Section id="work">
+          <Work />
+        </Section>
+        <Section id="project">
+          <Featured />
+          <Projects />
+        </Section>
+        <Section id="contact">
+          <Contact />
+        </Section>
       </Layout>
     </ThemeProvider>
   );
