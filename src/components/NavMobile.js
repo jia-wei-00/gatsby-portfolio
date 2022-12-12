@@ -15,51 +15,55 @@ const NavMobile = ({ section }) => {
   const [active, setActive] = useState("");
 
   return (
-    <Navigation section={section}>
-      <Link to="/#about">
-        <Section
-          onClick={aboutSection.onClick}
-          className={aboutSection.selected && "active"}
-        >
-          <span>
-            <PersonIcon />
-          </span>
-          <span>About</span>
-        </Section>
-      </Link>
-      <Link to="/#work">
-        <Section
-          onClick={workSection.onClick}
-          className={workSection.selected && "active"}
-        >
-          <span>
-            <WorkHistoryIcon />
-          </span>
-          <span>Work</span>
-        </Section>
-      </Link>
-      <Link to="/#project">
-        <Section
-          onClick={projectSection.onClick}
-          className={projectSection.selected && "active"}
-        >
-          <span>
-            <PendingActionsIcon />
-          </span>
-          <span>Projects</span>
-        </Section>
-      </Link>
-      <Link to="/#contact">
-        <Section
-          onClick={contactSection.onClick}
-          className={contactSection.selected && "active"}
-        >
-          <span>
-            <ContactMailIcon />
-          </span>
-          <span>Contact</span>
-        </Section>
-      </Link>
+    <Navigation
+      section={
+        aboutSection.selected
+          ? "about"
+          : workSection.selected
+          ? "work"
+          : projectSection.selected
+          ? "project"
+          : contactSection.selected
+          ? "contact"
+          : null
+      }
+    >
+      <Section
+        onClick={aboutSection.onClick}
+        className={aboutSection.selected && "active"}
+      >
+        <span>
+          <PersonIcon />
+        </span>
+        <span>About</span>
+      </Section>
+      <Section
+        onClick={workSection.onClick}
+        className={workSection.selected && "active"}
+      >
+        <span>
+          <WorkHistoryIcon />
+        </span>
+        <span>Work</span>
+      </Section>
+      <Section
+        onClick={projectSection.onClick}
+        className={projectSection.selected && "active"}
+      >
+        <span>
+          <PendingActionsIcon />
+        </span>
+        <span>Projects</span>
+      </Section>
+      <Section
+        onClick={contactSection.onClick}
+        className={contactSection.selected && "active"}
+      >
+        <span>
+          <ContactMailIcon />
+        </span>
+        <span>Contact</span>
+      </Section>
       <div className="indicator"></div>
     </Navigation>
   );
@@ -90,6 +94,7 @@ const Navigation = styled.div`
     border-radius: 50%;
     transition: 0.5s;
     transform: ${(props) => {
+      // console.log(props.section, "here");
       if (props.section === "work") {
         return `
           translateX(65px);

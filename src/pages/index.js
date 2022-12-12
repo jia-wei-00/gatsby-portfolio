@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "../styles/global.css";
 import {
   Layout,
@@ -29,22 +29,24 @@ export default function Home() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Layout>
-        {breakpoints.xl ? <Intro /> : null}
-        <Section id="about">
-          <About />
-        </Section>
-        <Section id="work">
-          <Work />
-        </Section>
-        <Section id="project">
-          <Featured />
-          <Projects />
-        </Section>
-        <Section id="contact">
-          <Contact />
-        </Section>
-      </Layout>
+      <ScrollingProvider>
+        <Layout>
+          {breakpoints.xl ? <Intro /> : null}
+          <Section id="about" className="offset">
+            <About />
+          </Section>
+          <Section id="work" className="offset">
+            <Work />
+          </Section>
+          <Section id="project" className="offset">
+            <Featured />
+            <Projects />
+          </Section>
+          <Section id="contact" className="offset">
+            <Contact />
+          </Section>
+        </Layout>
+      </ScrollingProvider>
     </ThemeProvider>
   );
 }

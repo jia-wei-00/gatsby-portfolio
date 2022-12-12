@@ -41,7 +41,7 @@ const Featured = ({ children }) => {
   const projects = data.projects.edges;
 
   return (
-    <div className="container" id="project">
+    <div className="container">
       {children}
       <h2 className="numbered-heading">Featured Projects</h2>
       <Container>

@@ -92,7 +92,7 @@ export default function Work({ children }) {
   };
 
   return (
-    <div className="container" id="work">
+    <div className="container">
       {children}
       <h2 className="numbered-heading">Working History</h2>
       <Box

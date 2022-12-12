@@ -36,7 +36,7 @@ const About = ({ children }) => {
   ];
 
   return (
-    <Container className="container" id="about">
+    <Container className="container">
       {children}
       <h2 className="numbered-heading">About Me</h2>
       <div>

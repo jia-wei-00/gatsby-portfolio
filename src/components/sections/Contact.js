@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Contact = ({ children }) => {
   return (
-    <div className="container" id="contact">
+    <div className="container">
       {children}
       <h2 className="numbered-heading">Contact</h2>
 
