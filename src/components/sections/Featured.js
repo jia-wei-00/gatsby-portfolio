@@ -5,6 +5,7 @@ import styled from "styled-components";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import Fade from "react-reveal/Fade";
 
 const Featured = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -43,7 +44,9 @@ const Featured = ({ children }) => {
   return (
     <div className="container">
       {children}
-      <h2 className="numbered-heading">Featured Projects</h2>
+      <Fade bottom>
+        <h2 className="numbered-heading">Featured Projects</h2>
+      </Fade>
       <Container>
         {projects &&
           projects.map(({ node }, i) => {

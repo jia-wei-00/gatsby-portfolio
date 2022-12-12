@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
+import Fade from "react-reveal/Fade";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -94,7 +95,9 @@ export default function Work({ children }) {
   return (
     <div className="container">
       {children}
-      <h2 className="numbered-heading">Working History</h2>
+      <Fade bottom>
+        <h2 className="numbered-heading">Working History</h2>
+      </Fade>
       <Box
         sx={{
           // flexGrow: 1,

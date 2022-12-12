@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { graphql, useStaticQuery } from "gatsby";
+import Fade from "react-reveal/Fade";
 
 const Container = styled.div`
   display: grid;
@@ -50,11 +51,21 @@ const Intro = () => {
   return (
     <Container>
       <div className="container">
-        <p>Hi, my name is</p>
-        <h1>{title}</h1>
-        <h2>{sign}</h2>
-        <h4>{description}</h4>
-        <button className="btn">Resume</button>
+        <Fade>
+          <p>Hi, my name is</p>
+        </Fade>
+        <Fade duration={1000}>
+          <h1>{title}</h1>
+        </Fade>
+        <Fade duration={2000}>
+          <h2>{sign}</h2>
+        </Fade>
+        <Fade duration={3000}>
+          <h4>{description}</h4>
+        </Fade>
+        <Fade duration={4000}>
+          <button className="btn">Resume</button>
+        </Fade>
       </div>
     </Container>
   );

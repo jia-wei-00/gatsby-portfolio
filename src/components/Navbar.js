@@ -4,8 +4,35 @@ import styled from "styled-components";
 import Fade from "react-reveal/Fade";
 import { Logo } from "@components";
 
+function useScrollDirection() {
+  const [scrollDirection, setScrollDirection] = useState(null);
+
+  useEffect(() => {
+    let lastScrollY = window.pageYOffset;
+
+    const updateScrollDirection = () => {
+      const scrollY = window.pageYOffset;
+      const direction = scrollY > lastScrollY ? "down" : "up";
+      if (
+        direction !== scrollDirection &&
+        (scrollY - lastScrollY > 10 || scrollY - lastScrollY < -10)
+      ) {
+        setScrollDirection(direction);
+      }
+      lastScrollY = scrollY > 0 ? scrollY : 0;
+    };
+    window.addEventListener("scroll", updateScrollDirection); // add event listener
+    return () => {
+      window.removeEventListener("scroll", updateScrollDirection); // clean up
+    };
+  }, [scrollDirection]);
+
+  return scrollDirection;
+}
+
 const Navbar = () => {
   const [sticky, setSticky] = useState(false);
+  const scrollDirection = useScrollDirection();
 
   useEffect(() => {
     const header = document.getElementById("myHeader");
@@ -26,38 +53,41 @@ const Navbar = () => {
 
   return (
     <>
-      <Fade top>
-        <Nav id="myHeader">
-          <ul>
-            <Link to="/#about" className="link">
-              <li>
-                <p>1</p>
-                <p>About</p>
-              </li>
-            </Link>
-            <Link to="/#work" className="link">
-              <li>
-                <p>2</p>
-                <p>Work</p>
-              </li>
-            </Link>
-            <Link to="/#project" className="link">
-              <li>
-                <p>3</p>
-                <p>Projects</p>
-              </li>
-            </Link>
-            <Link to="/#contact" className="link">
-              <li>
-                <p>4</p>
-                <p>Contact</p>
-              </li>
-            </Link>
-          </ul>
-        </Nav>
-      </Fade>
+      {!sticky ? (
+        <Fade top>
+          <Nav id="myHeader">
+            <ul>
+              <Link to="/#about" className="link">
+                <li>
+                  <p>1</p>
+                  <p>About</p>
+                </li>
+              </Link>
+              <Link to="/#work" className="link">
+                <li>
+                  <p>2</p>
+                  <p>Work</p>
+                </li>
+              </Link>
+              <Link to="/#project" className="link">
+                <li>
+                  <p>3</p>
+                  <p>Projects</p>
+                </li>
+              </Link>
+              <Link to="/#contact" className="link">
+                <li>
+                  <p>4</p>
+                  <p>Contact</p>
+                </li>
+              </Link>
+            </ul>
+          </Nav>
+        </Fade>
+      ) : null}
+
       {sticky ? (
-        <StickyNav>
+        <StickyNav scroll={scrollDirection}>
           <Logo />
           <Link to="/#about" className="link">
             <span>1</span>
@@ -162,6 +192,9 @@ const StickyNav = styled.div`
   top: 0;
   right: 0;
   left: 0;
+  transition: var(--transition);
+  transform: ${(props) =>
+    props.scroll === "down" ? `translateY(-100%)` : null};
 
   & > div:first-child {
     position: absolute;

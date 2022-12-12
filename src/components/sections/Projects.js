@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useStaticQuery, graphql } from "gatsby";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+import Fade from "react-reveal/Fade";
 
 const Projects = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -35,32 +36,34 @@ const Projects = ({ children }) => {
       {children}
       <h3>More Projects</h3>
       <ProjectContainer>
-        {projects.slice(0, show ? 999 : 6).map((project, i) => {
-          const { title, github, external, tech } = project.node.frontmatter;
-          const html = project.node.html;
+        <Fade bottom cascade>
+          {projects.slice(0, show ? 999 : 6).map((project, i) => {
+            const { title, github, external, tech } = project.node.frontmatter;
+            const html = project.node.html;
 
-          return (
-            <Box>
-              <div className="info">
-                <h3>{title}</h3>
-                <div dangerouslySetInnerHTML={{ __html: html }} />
-                <ul className="tech">
-                  {tech.map((tech, i) => {
-                    return <li key={i}>{tech}</li>;
-                  })}
-                </ul>
-              </div>
-              <div className="icon">
-                <a href={github} target="__blank">
-                  <GitHubIcon />
-                </a>
-                <a href={external} target="__blank">
-                  <OpenInNewIcon />
-                </a>
-              </div>
-            </Box>
-          );
-        })}
+            return (
+              <Box>
+                <div className="info">
+                  <h3>{title}</h3>
+                  <div dangerouslySetInnerHTML={{ __html: html }} />
+                  <ul className="tech">
+                    {tech.map((tech, i) => {
+                      return <li key={i}>{tech}</li>;
+                    })}
+                  </ul>
+                </div>
+                <div className="icon">
+                  <a href={github} target="__blank">
+                    <GitHubIcon />
+                  </a>
+                  <a href={external} target="__blank">
+                    <OpenInNewIcon />
+                  </a>
+                </div>
+              </Box>
+            );
+          })}
+        </Fade>
       </ProjectContainer>
       <button className="btn" onClick={() => setShow(!show)}>
         Show {show ? "Less" : "More"}
@@ -79,7 +82,7 @@ const Container = styled.div`
 const Box = styled.div`
   width: 100%;
   background: var(--color-darkbg);
-  height: auto;
+  height: 100%;
   padding: 30px;
   border-radius: 10px;
   display: grid;

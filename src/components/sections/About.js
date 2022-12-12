@@ -2,6 +2,7 @@ import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
 import styled from "styled-components";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import Fade from "react-reveal/Fade";
 
 const About = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -38,7 +39,9 @@ const About = ({ children }) => {
   return (
     <Container className="container">
       {children}
-      <h2 className="numbered-heading">About Me</h2>
+      <Fade bottom>
+        <h2 className="numbered-heading">About Me</h2>
+      </Fade>
       <div>
         <StyledImage image={image} />
         <div>

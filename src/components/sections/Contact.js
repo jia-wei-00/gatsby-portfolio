@@ -1,11 +1,14 @@
 import React from "react";
 import styled from "styled-components";
+import Fade from "react-reveal/Fade";
 
 const Contact = ({ children }) => {
   return (
     <div className="container">
       {children}
-      <h2 className="numbered-heading">Contact</h2>
+      <Fade bottom>
+        <h2 className="numbered-heading">Contact</h2>
+      </Fade>
 
       <ContactContainer>
         <h2>Get In Touch</h2>
