@@ -8,6 +8,8 @@ import {
   Featured,
   Projects,
   Contact,
+  SocialIcons,
+  Footer,
 } from "@components";
 import { useBreakpoint } from "gatsby-plugin-breakpoints";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -45,6 +47,8 @@ export default function Home() {
           <Section id="contact" className="offset">
             <Contact />
           </Section>
+          {breakpoints.sm ? null : <SocialIcons />}
+          <Footer />
         </Layout>
       </ScrollingProvider>
     </ThemeProvider>

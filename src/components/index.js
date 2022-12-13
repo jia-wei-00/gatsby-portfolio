@@ -9,3 +9,5 @@ export { default as Work } from "./sections/Work";
 export { default as Featured } from "./sections/Featured";
 export { default as Projects } from "./sections/Projects";
 export { default as Contact } from "./sections/Contact";
+export { default as SocialIcons } from "./SocialIcons";
+export { default as Footer } from "./Footer";

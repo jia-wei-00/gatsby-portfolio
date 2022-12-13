@@ -54,19 +54,19 @@ const Intro = () => {
   return (
     <Container>
       <div className="container">
-        <Fade>
+        <Fade delay={250}>
           <p>Hi, my name is</p>
         </Fade>
-        <Fade duration={1000}>
+        <Fade delay={500}>
           <h1>{title}</h1>
         </Fade>
-        <Fade duration={2000}>
+        <Fade delay={700}>
           <h2>{sign}</h2>
         </Fade>
-        <Fade duration={3000}>
+        <Fade delay={800}>
           <h4>{description}</h4>
         </Fade>
-        <Fade duration={4000}>
+        <Fade delay={900}>
           <a href={data.file.publicURL} target="__blank">
             <button className="btn">Resume</button>
           </a>
