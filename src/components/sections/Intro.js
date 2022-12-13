@@ -43,6 +43,9 @@ const Intro = () => {
           sign
         }
       }
+      file(relativePath: { eq: "resume.pdf" }) {
+        publicURL
+      }
     }
   `);
 
@@ -64,7 +67,9 @@ const Intro = () => {
           <h4>{description}</h4>
         </Fade>
         <Fade duration={4000}>
-          <button className="btn">Resume</button>
+          <a href={data.file.publicURL} target="__blank">
+            <button className="btn">Resume</button>
+          </a>
         </Fade>
       </div>
     </Container>

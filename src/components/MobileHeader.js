@@ -1,6 +1,8 @@
 import { Logo } from "@components";
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { graphql, useStaticQuery } from "gatsby";
+import Slide from "react-reveal/Slide";
 
 function useScrollDirection() {
   const [scrollDirection, setScrollDirection] = useState(null);
@@ -30,17 +32,28 @@ function useScrollDirection() {
 
 const MobileHeader = () => {
   const scrollDirection = useScrollDirection();
+  const data = useStaticQuery(graphql`
+    query {
+      file(relativePath: { eq: "resume.pdf" }) {
+        publicURL
+      }
+    }
+  `);
 
   return (
-    <Container scroll={scrollDirection}>
-      <div>
-        <Logo />
+    <Slide top>
+      <Container scroll={scrollDirection}>
+        <div>
+          <Logo />
 
-        <button>
-          <a className="link">Resume</a>
-        </button>
-      </div>
-    </Container>
+          <button>
+            <a className="link" href={data.file.publicURL} target="__blank">
+              Resume
+            </a>
+          </button>
+        </div>
+      </Container>
+    </Slide>
   );
 };
 

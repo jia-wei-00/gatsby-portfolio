@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import PersonIcon from "@mui/icons-material/Person";
 import WorkHistoryIcon from "@mui/icons-material/WorkHistory";
 import PendingActionsIcon from "@mui/icons-material/PendingActions";
 import ContactMailIcon from "@mui/icons-material/ContactMail";
-import { Link } from "gatsby";
 import { useScrollSection } from "react-scroll-section";
 
 const NavMobile = ({ section }) => {
@@ -12,7 +11,6 @@ const NavMobile = ({ section }) => {
   const workSection = useScrollSection("work");
   const projectSection = useScrollSection("project");
   const contactSection = useScrollSection("contact");
-  const [active, setActive] = useState("");
 
   return (
     <Navigation
