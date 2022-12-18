@@ -14,6 +14,8 @@ import {
 import { useBreakpoint } from "gatsby-plugin-breakpoints";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { ScrollingProvider, Section } from "react-scroll-section";
+import { Helmet } from "react-helmet";
+import { graphql } from "gatsby";
 
 const theme = createTheme({
   palette: {
@@ -26,11 +28,17 @@ const theme = createTheme({
   },
 });
 
-export default function Home() {
+export default function Home({ data }) {
   const breakpoints = useBreakpoint();
+
+  const { favicon, title } = data.site.siteMetadata;
 
   return (
     <ThemeProvider theme={theme}>
+      <Helmet>
+        <meta name="icon" href={favicon} />
+        <title>{title}</title>
+      </Helmet>
       <ScrollingProvider>
         <Layout>
           {breakpoints.xl ? <Intro /> : null}
@@ -54,3 +62,14 @@ export default function Home() {
     </ThemeProvider>
   );
 }
+
+export const data = graphql`
+  query {
+    site {
+      siteMetadata {
+        favicon
+        title
+      }
+    }
+  }
+`;

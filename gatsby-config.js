@@ -19,6 +19,7 @@ module.exports = {
     whatsapp: "https://wa.link/s1uxa5",
     github: "https://github.com/jia-wei-00",
     linkedin: "https://www.linkedin.com/in/leong-jia-wei-/",
+    favicon: "./static/favicon.ico",
   },
 
   plugins: [
@@ -28,6 +29,7 @@ module.exports = {
     "gatsby-plugin-image",
     "gatsby-plugin-styled-components",
     "gatsby-plugin-material-ui",
+    "gatsby-plugin-react-helmet",
     {
       resolve: "gatsby-plugin-breakpoints",
       options: {
