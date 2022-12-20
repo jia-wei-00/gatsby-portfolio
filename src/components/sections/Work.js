@@ -7,6 +7,7 @@ import Box from "@mui/material/Box";
 import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 import Fade from "react-reveal/Fade";
+import { useBreakpoint } from "gatsby-plugin-breakpoints";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -63,6 +64,7 @@ const Desc = styled.div`
 `;
 
 export default function Work({ children }) {
+  const breakpoints = useBreakpoint();
   const data = useStaticQuery(graphql`
     query {
       jobs: allMarkdownRemark(
@@ -99,15 +101,21 @@ export default function Work({ children }) {
         <h2 className="numbered-heading">Working History</h2>
       </Fade>
       <Box
-        sx={{
-          // flexGrow: 1,
-          bgcolor: "none",
-          display: "grid",
-          gridTemplateColumns: "1fr 4fr",
-        }}
+        sx={
+          breakpoints.xs
+            ? {
+                bgcolor: "none",
+                display: "grid",
+              }
+            : {
+                bgcolor: "none",
+                display: "grid",
+                gridTemplateColumns: "1fr 4fr",
+              }
+        }
       >
         <Tabs
-          orientation="vertical"
+          orientation={breakpoints.xs ? "horizontal" : "vertical"}
           value={value}
           onChange={handleChange}
           textColor="secondary"
