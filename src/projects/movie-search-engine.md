@@ -7,7 +7,7 @@ tech:
   - React
   - MobX
   - Axios
-  - Styled-Components
+  - Styled Components
 slug: "project"
 ---
 
