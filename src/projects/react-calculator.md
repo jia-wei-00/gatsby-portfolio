@@ -1,5 +1,5 @@
 ---
-date: "7"
+date: "8"
 title: "React Calculator"
 github: "https://github.com/jia-wei-00/react-calculator"
 external: "https://jia-wei-react-calculator.vercel.app/"
