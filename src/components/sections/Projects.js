@@ -92,7 +92,7 @@ const Box = styled.div`
   transition: var(--transition);
 
   &:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) !important;
   }
 
   .info {

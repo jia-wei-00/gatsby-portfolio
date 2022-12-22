@@ -19,6 +19,11 @@ const Icons = styled.div`
   & > *:not(:last-child) {
     margin: 0.5rem 0;
   }
+
+  svg:hover {
+    transform: translateY(-5px);
+    transition: var(--transition);
+  }
 `;
 
 const Line = styled(motion.span)`
