@@ -1,0 +1,12 @@
+---
+date: "1"
+title: "Real-time Chat App"
+github: "https://github.com/jia-wei-00/movie-searching-engine"
+external: "https://realtime-chatapp-opal.vercel.app/"
+tech:
+  - React
+  - Socket io
+slug: "project"
+---
+
+A simple movie search engine using OMDb API

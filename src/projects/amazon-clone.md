@@ -1,5 +1,5 @@
 ---
-date: "1"
+date: "3"
 title: "Amazon Clone"
 github: "https://github.com/jia-wei-00/amazon-clone/"
 external: "https://jia-wei-00.github.io/amazon-clone/"
