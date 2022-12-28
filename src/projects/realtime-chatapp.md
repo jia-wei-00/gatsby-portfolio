@@ -9,4 +9,4 @@ tech:
 slug: "project"
 ---
 
-A simple movie search engine using OMDb API
+A simple real-time chat app that allows users to chat together in the same room
