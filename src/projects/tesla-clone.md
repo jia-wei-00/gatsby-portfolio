@@ -1,5 +1,5 @@
 ---
-date: "7"
+date: "1.7"
 title: "Tesla Clone"
 github: "https://github.com/jia-wei-00/tesla-clone/"
 external: "https://jia-wei-00.github.io/tesla-clone/"
