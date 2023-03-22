@@ -7,6 +7,6 @@ Hi I'm Jia Wei, a front-end developer who likes to create beautiful websites wit
 
 I enjoy creating beautiful websites because it feels like an accomplishment to complete one.<br /><br />
 
-I graduated from <a class="link" href="https://www.uum.edu.my/"  starget="_blank">Universiti Utara Malaysia</a> with a degree in Bachelor of Science (Multimedia).<br /><br />
+I graduated from <a class="link" href="https://www.uum.edu.my/" target="_blank">Universiti Utara Malaysia</a> with a degree in Bachelor of Science (Multimedia).<br /><br />
 
 I am a positive thinker, and I think this help me the most in difficult moments.
