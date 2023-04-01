@@ -1,5 +1,5 @@
 ---
-date: "1.6"
+date: "1.5"
 title: "Whatsapp Clone"
 github: "https://github.com/jia-wei-00/whatsapp-mern/"
 external: "https://jia-wei-00.github.io/whatsapp-mern/"

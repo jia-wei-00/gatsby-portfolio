@@ -1,5 +1,5 @@
 ---
-date: "1.4"
+date: "1.6"
 title: "Group Chat App"
 github: "https://github.com/jia-wei-00/amazon-clone/"
 external: "https://jia-wei-00.github.io/amazon-clone/"
