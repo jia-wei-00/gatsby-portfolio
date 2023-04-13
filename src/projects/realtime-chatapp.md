@@ -1,5 +1,5 @@
 ---
-date: "2.2"
+date: "2.3"
 title: "Real-time Chat App"
 github: "https://github.com/jia-wei-00/movie-searching-engine"
 external: "https://realtime-chatapp-opal.vercel.app/"

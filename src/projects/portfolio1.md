@@ -1,5 +1,5 @@
 ---
-date: "1.9"
+date: "2.0"
 title: "Portfolio 1"
 github: "https://github.com/jia-wei-00/react-portfolio"
 external: "https://jia-wei-portfolio.vercel.app/"

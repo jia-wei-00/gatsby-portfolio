@@ -1,5 +1,5 @@
 ---
-date: "1.3"
+date: "1.4"
 title: "Todo App React"
 github: "https://github.com/jia-wei-00/convert-besquare-todo"
 external: "https://todo-app-react-jia-wei-00.vercel.app/"

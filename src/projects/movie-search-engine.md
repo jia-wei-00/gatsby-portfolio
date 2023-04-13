@@ -1,5 +1,5 @@
 ---
-date: "1.8"
+date: "1.9"
 title: "Movie Search Engine"
 github: "https://github.com/jia-wei-00/movie-searching-engine"
 external: "https://movie-searching-engine.vercel.app/"
