@@ -3,7 +3,7 @@ date: "2022-7-1"
 title: "Web Developer"
 company: "Top Click"
 location: "Ipoh, Perak"
-range: "Jun 2022 - Present"
+range: "Jun 2022 - Feb 2023"
 url: "https://topclickweb.com/"
 slug: "jobs"
 ---
