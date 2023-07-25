@@ -28,12 +28,17 @@ const About = ({ children }) => {
   const image = getImage(data.markdownRemark.frontmatter.image.childImageSharp);
   const skills = [
     "Javascript",
+    "Typescript",
     "React",
     "Redux",
+    "MobX",
     "Firebase",
     "Styled Components",
+    "Scss",
     "Gatsby",
+    "Flutter",
     "WordPress",
+    "Shopify",
   ];
 
   return (
