@@ -92,7 +92,6 @@ const Navigation = styled.div`
     border-radius: 50%;
     transition: 0.5s;
     transform: ${(props) => {
-      // console.log(props.section, "here");
       if (props.section === "work") {
         return `
           translateX(65px);
