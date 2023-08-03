@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useStaticQuery, graphql } from "gatsby";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import YouTubeIcon from "@mui/icons-material/YouTube";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import Fade from "react-reveal/Fade";
 
@@ -17,6 +18,7 @@ const Projects = ({ children }) => {
             frontmatter {
               title
               github
+              video
               external
               tech
             }
@@ -38,8 +40,13 @@ const Projects = ({ children }) => {
       <ProjectContainer>
         <Fade bottom cascade>
           {projects.slice(0, show ? 999 : 6).map((project, i) => {
-            const { title, github, external, tech } = project.node.frontmatter;
+            const { title, github, external, tech, video } =
+              project.node.frontmatter;
             const html = project.node.html;
+
+            if (title === "Final Year Project") {
+              console.log(github, video);
+            }
 
             return (
               <Box>
@@ -53,8 +60,8 @@ const Projects = ({ children }) => {
                   </ul>
                 </div>
                 <div className="icon">
-                  <a href={github} target="__blank">
-                    <GitHubIcon />
+                  <a href={github === null ? video : github} target="__blank">
+                    {github === null ? <YouTubeIcon /> : <GitHubIcon />}
                   </a>
                   <a href={external} target="__blank">
                     <OpenInNewIcon />

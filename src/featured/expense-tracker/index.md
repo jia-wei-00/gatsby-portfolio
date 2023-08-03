@@ -1,5 +1,5 @@
 ---
-date: "1"
+date: "2"
 title: "Expenses Tracker"
 cover: "./demo.png"
 github: "https://github.com/jia-wei-00/expenses-tracker"

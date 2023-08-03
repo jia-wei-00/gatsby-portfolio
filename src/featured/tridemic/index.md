@@ -7,7 +7,7 @@ external: "https://jiawei01.itch.io/tridemic"
 tech:
   - Unity
   - C#
-slug: "featured"
+slug: "project"
 ---
 
 University final year game project. To raise awareness of epidemiology. To complete each level, the player must answer questions in the game. There are some hints in the game for players to read before answering questions.

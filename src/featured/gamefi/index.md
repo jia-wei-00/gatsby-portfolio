@@ -1,5 +1,5 @@
 ---
-date: "2"
+date: "3"
 title: "GameFi Project"
 cover: "./demo.png"
 github: "https://github.com/jia-wei-00/blockchain/"
