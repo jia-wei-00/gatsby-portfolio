@@ -44,10 +44,6 @@ const Projects = ({ children }) => {
               project.node.frontmatter;
             const html = project.node.html;
 
-            if (title === "Final Year Project") {
-              console.log(github, video);
-            }
-
             return (
               <Box>
                 <div className="info">
