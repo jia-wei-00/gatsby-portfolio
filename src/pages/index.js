@@ -37,6 +37,10 @@ export default function Home({ data }) {
     <ThemeProvider theme={theme}>
       <Helmet>
         <meta name="icon" href={favicon} />
+        <meta
+          name="google-site-verification"
+          content="DDRi_eR5BjqBNxcVQ8-IzV7B6He_W3r89WjdmRhY99k"
+        />
         <title>{title}</title>
       </Helmet>
       <ScrollingProvider>
