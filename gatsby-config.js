@@ -28,7 +28,6 @@ module.exports = {
     "gatsby-plugin-sharp",
     "gatsby-plugin-image",
     "gatsby-plugin-styled-components",
-    "gatsby-plugin-material-ui",
     "gatsby-plugin-react-helmet",
     {
       resolve: "gatsby-plugin-breakpoints",

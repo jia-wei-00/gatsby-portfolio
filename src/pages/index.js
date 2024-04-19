@@ -16,6 +16,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { ScrollingProvider, Section } from "react-scroll-section";
 import { Helmet } from "react-helmet";
 import { graphql } from "gatsby";
+import { Analytics } from "@vercel/analytics/react";
 
 const theme = createTheme({
   palette: {
@@ -35,6 +36,7 @@ export default function Home({ data }) {
 
   return (
     <ThemeProvider theme={theme}>
+      <Analytics />
       <Helmet>
         <meta name="icon" href={favicon} />
         <meta
