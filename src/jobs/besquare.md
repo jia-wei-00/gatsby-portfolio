@@ -29,7 +29,7 @@ Mobile Module:
 
 - Develop mobile applications for Android platforms.
 - Learn to build mobile apps using Flutter.
-- Implement state management using Mobx for seamless app behavior.
+- Utilizing Cubit for state management.
 - Discover how to use Flutter widgets effectively.
 
 <br />
