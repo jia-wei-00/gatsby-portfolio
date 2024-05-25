@@ -43,7 +43,7 @@ const Intro = () => {
           sign
         }
       }
-      file(relativePath: { eq: "resume.pdf" }) {
+      file(relativePath: { eq: "leong_jia_wei.pdf" }) {
         publicURL
       }
     }
