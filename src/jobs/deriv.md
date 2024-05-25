@@ -3,7 +3,7 @@ date: "2023-8-25"
 title: "Frontend Developer"
 company: "Deriv"
 location: "Cyberjaya, Selangor"
-range: "Ogos 2023 - Present"
+range: "Aug 2023 - Present"
 url: "https://deriv.com/"
 slug: "jobs"
 ---

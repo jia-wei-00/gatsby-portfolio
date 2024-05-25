@@ -3,7 +3,7 @@ date: "2023-7-25"
 title: "Graduate Trainee"
 company: "Besquare Deriv"
 location: "Cyberjaya, Selangor"
-range: "March 2023 - July 2023"
+range: "Mar 2023 - Jul 2023"
 url: "https://deriv.com/"
 slug: "jobs"
 ---
