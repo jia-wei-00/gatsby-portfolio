@@ -37,7 +37,7 @@ const MobileHeader = () => {
   const scrollDirection = useScrollDirection();
   const data = useStaticQuery(graphql`
     query {
-      file(relativePath: { eq: "resume.pdf" }) {
+      file(relativePath: { eq: "leong_jia_wei.pdf" }) {
         publicURL
       }
       site {
