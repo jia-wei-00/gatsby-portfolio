@@ -8,6 +8,7 @@ url: "https://deriv.com/"
 slug: "jobs"
 ---
 
+- Developed a back-office system and enhanced the Partner website UI using OutSystems, enabling seamless event management and API integration.
 - Developed and maintained design system components for Deriv's products.
 - Collaborated with cross-functional teams to ensure consistency in user interfaces.
 - Implemented responsive and user-friendly front-end interfaces using Next.js and Gatsby and React.
