@@ -67,7 +67,11 @@ const Intro = () => {
           <h4>{description}</h4>
         </Fade>
         <Fade delay={900}>
-          <a href={data.file.publicURL} target="__blank">
+          <a
+            href={data.file.publicURL}
+            target="__blank"
+            download="leong_jia_wei_resume.pdf"
+          >
             <button className="btn">Resume</button>
           </a>
         </Fade>
