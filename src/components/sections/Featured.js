@@ -5,13 +5,14 @@ import styled from "styled-components";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import YouTubeIcon from "@mui/icons-material/YouTube";
-import Fade from "react-reveal/Fade";
+import { motion } from "framer-motion";
 
 const Featured = ({ children }) => {
   const data = useStaticQuery(graphql`
     query {
       projects: allMarkdownRemark(
         filter: { frontmatter: { slug: { eq: "featured" } } }
+        sort: { frontmatter: { date: DESC } }
       ) {
         edges {
           node {
@@ -44,9 +45,14 @@ const Featured = ({ children }) => {
   return (
     <div className="container">
       {children}
-      <Fade bottom>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
         <h2 className="numbered-heading">Featured Projects</h2>
-      </Fade>
+      </motion.div>
       <Container>
         {projects &&
           projects.map(({ node }, i) => {
@@ -56,7 +62,7 @@ const Featured = ({ children }) => {
             const html = node.html;
 
             return (
-              <ProjectContainer>
+              <ProjectContainer key={i}>
                 <Image
                   image={getImage(cover.childImageSharp)}
                   className="image"
@@ -71,9 +77,11 @@ const Featured = ({ children }) => {
                   </ul>
                   <div className="icon-wrapper">
                     {github ? (
-                      <a href={github} target="_blank" rel="noreferrer">
-                        <GitHubIcon />
-                      </a>
+                      github.map((item, i) => (
+                        <a key={i} href={item} target="_blank" rel="noreferrer">
+                          <GitHubIcon />
+                        </a>
+                      ))
                     ) : (
                       <a href={video} target="_blank" rel="noreferrer">
                         <YouTubeIcon />

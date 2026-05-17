@@ -1,7 +1,8 @@
 ---
-date: "1.3"
+date: "8"
 title: "Amazon Clone"
-github: "https://github.com/jia-wei-00/amazon-clone/"
+github:
+  - "https://github.com/jia-wei-00/amazon-clone/"
 external: "https://jia-wei-00.github.io/amazon-clone/"
 tech:
   - React

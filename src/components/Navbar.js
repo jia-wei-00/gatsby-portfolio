@@ -1,7 +1,7 @@
 import { Link } from "gatsby";
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import Fade from "react-reveal/Fade";
+import { motion } from "framer-motion";
 import { Logo } from "@components";
 
 function useScrollDirection() {
@@ -54,7 +54,7 @@ const Navbar = () => {
   return (
     <>
       {!sticky ? (
-        <Fade top>
+        <motion.div initial={{ opacity: 0, y: -30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
           <Nav id="myHeader">
             <ul>
               <Link to="/#about" className="link">
@@ -83,7 +83,7 @@ const Navbar = () => {
               </Link>
             </ul>
           </Nav>
-        </Fade>
+        </motion.div>
       ) : null}
 
       {sticky ? (
@@ -91,27 +91,19 @@ const Navbar = () => {
           <Logo />
           <Link to="/#about" className="link">
             <span>1</span>
-            <Fade right>
-              <span>About</span>
-            </Fade>
+            <motion.span initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>About</motion.span>
           </Link>
           <Link to="/#work" className="link">
             <span>2</span>
-            <Fade right>
-              <span>Work</span>
-            </Fade>
+            <motion.span initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>Work</motion.span>
           </Link>
           <Link to="/#project" className="link">
             <span>3</span>
-            <Fade right>
-              <span>Projects</span>
-            </Fade>
+            <motion.span initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>Projects</motion.span>
           </Link>
           <Link to="/#contact" className="link">
             <span>4</span>
-            <Fade right>
-              <span>Contact</span>
-            </Fade>
+            <motion.span initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>Contact</motion.span>
           </Link>
         </StickyNav>
       ) : null}

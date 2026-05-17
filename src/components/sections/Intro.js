@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { graphql, useStaticQuery } from "gatsby";
-import Fade from "react-reveal/Fade";
+import { motion } from "framer-motion";
 
 const Container = styled.div`
   display: grid;
@@ -54,19 +54,11 @@ const Intro = () => {
   return (
     <Container>
       <div className="container">
-        <Fade delay={250}>
-          <p>Hi, my name is</p>
-        </Fade>
-        <Fade delay={500}>
-          <h1>{title}</h1>
-        </Fade>
-        <Fade delay={700}>
-          <h2>{sign}</h2>
-        </Fade>
-        <Fade delay={800}>
-          <h4>{description}</h4>
-        </Fade>
-        <Fade delay={900}>
+        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.25 }}>Hi, my name is</motion.p>
+        <motion.h1 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.5 }}>{title}</motion.h1>
+        <motion.h2 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.7 }}>{sign}</motion.h2>
+        <motion.h4 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.8 }}>{description}</motion.h4>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.9 }}>
           <a
             href={data.file.publicURL}
             target="__blank"
@@ -74,7 +66,7 @@ const Intro = () => {
           >
             <button className="btn">Resume</button>
           </a>
-        </Fade>
+        </motion.div>
       </div>
     </Container>
   );

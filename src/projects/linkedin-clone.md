@@ -1,7 +1,8 @@
 ---
-date: "1.8"
+date: "6"
 title: "Linkedin Clone"
-github: "https://github.com/jia-wei-00/linkedin-clone/"
+github:
+  - "https://github.com/jia-wei-00/linkedin-clone/"
 external: "https://jia-wei-00.github.io/linkedin-clone/"
 tech:
   - React

@@ -1,7 +1,8 @@
 ---
-date: "1.1"
+date: "10"
 title: "Coin Watch"
-github: "https://github.com/jia-wei-00/Error-404"
+github:
+  - "https://github.com/jia-wei-00/Error-404"
 external: "https://coin-watch-six.vercel.app/"
 tech:
   - React

@@ -1,7 +1,8 @@
 ---
-date: "1.2"
+date: "9"
 title: "Tesla Clone"
-github: "https://github.com/jia-wei-00/tesla-clone/"
+github:
+  - "https://github.com/jia-wei-00/tesla-clone/"
 external: "https://jia-wei-00.github.io/tesla-clone/"
 tech:
   - React

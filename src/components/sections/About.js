@@ -2,7 +2,7 @@ import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
 import styled from "styled-components";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import Fade from "react-reveal/Fade";
+import { motion } from "framer-motion";
 
 const About = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -27,26 +27,31 @@ const About = ({ children }) => {
   const { html } = data.markdownRemark;
   const image = getImage(data.markdownRemark.frontmatter.image.childImageSharp);
   const skills = [
-    "Javascript",
+    "Openai SDK",
+    "Vercel AI SDK",
     "Typescript",
     "React",
-    "Redux",
-    "MobX",
+    "React Native",
+    "Vue",
+    "Zustand",
+    "Tanstack Query",
+    "Pinia",
     "Firebase",
-    "Styled Components",
+    "Supabase",
     "Scss",
-    "Gatsby",
-    "Flutter",
-    "WordPress",
-    "Shopify",
   ];
 
   return (
     <Container className="container">
       {children}
-      <Fade bottom>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
         <h2 className="numbered-heading">About Me</h2>
-      </Fade>
+      </motion.div>
       <div>
         <StyledImage image={image} />
         <div>

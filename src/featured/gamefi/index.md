@@ -1,8 +1,9 @@
 ---
-date: "3"
+date: "1"
 title: "GameFi Project"
 cover: "./demo.png"
-github: "https://github.com/jia-wei-00/blockchain/"
+github:
+  - "https://github.com/jia-wei-00/blockchain/"
 external: "https://jia-wei-00.github.io/blockchain/"
 tech:
   - React

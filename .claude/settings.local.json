@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "PowerShell(Get-Process *)",
+      "Bash(npm outdated *)",
+      "Bash(npm install *)",
+      "Bash(npm list *)",
+      "Bash(npm show *)"
+    ]
+  }
+}

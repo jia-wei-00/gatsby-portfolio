@@ -1,7 +1,8 @@
 ---
-date: "2.1"
+date: "3"
 title: "React Calculator"
-github: "https://github.com/jia-wei-00/react-calculator"
+github:
+  - "https://github.com/jia-wei-00/react-calculator"
 external: "https://jia-wei-react-calculator.vercel.app/"
 tech:
   - React

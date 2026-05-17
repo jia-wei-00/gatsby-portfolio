@@ -12,3 +12,14 @@
 //     },
 //   });
 // };
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+  createTypes(`
+    type MarkdownRemarkFrontmatter {
+      github: [String]
+    }
+  `);
+};
+
+

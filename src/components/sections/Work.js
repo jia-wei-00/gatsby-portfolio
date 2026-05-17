@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
-import Fade from "react-reveal/Fade";
+import { motion } from "framer-motion";
 import { useBreakpoint } from "gatsby-plugin-breakpoints";
 
 function TabPanel(props) {
@@ -97,9 +97,9 @@ export default function Work({ children }) {
   return (
     <div className="container">
       {children}
-      <Fade bottom>
+      <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
         <h2 className="numbered-heading">Working History</h2>
-      </Fade>
+      </motion.div>
       <Box
         sx={
           breakpoints.xs

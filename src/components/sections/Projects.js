@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
-import Fade from "react-reveal/Fade";
+import { motion } from "framer-motion";
 
 const Projects = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -38,35 +38,40 @@ const Projects = ({ children }) => {
       {children}
       <h3>More Projects</h3>
       <ProjectContainer>
-        <Fade bottom cascade>
-          {projects.slice(0, show ? 999 : 6).map((project, i) => {
-            const { title, github, external, tech, video } =
-              project.node.frontmatter;
-            const html = project.node.html;
+        {projects.slice(0, show ? 999 : 6).map((project, i) => {
+          const { title, github, external, tech, video } =
+            project.node.frontmatter;
+          const html = project.node.html;
 
-            return (
-              <Box>
-                <div className="info">
-                  <h3>{title}</h3>
-                  <div dangerouslySetInnerHTML={{ __html: html }} />
-                  <ul className="tech">
-                    {tech.map((tech, i) => {
-                      return <li key={i}>{tech}</li>;
-                    })}
-                  </ul>
-                </div>
-                <div className="icon">
-                  <a href={github === null ? video : github} target="__blank">
-                    {github === null ? <YouTubeIcon /> : <GitHubIcon />}
-                  </a>
-                  <a href={external} target="__blank">
-                    <OpenInNewIcon />
-                  </a>
-                </div>
-              </Box>
-            );
-          })}
-        </Fade>
+          return (
+            <Box
+              as={motion.div}
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="info">
+                <h3>{title}</h3>
+                <div dangerouslySetInnerHTML={{ __html: html }} />
+                <ul className="tech">
+                  {tech.map((tech, i) => {
+                    return <li key={i}>{tech}</li>;
+                  })}
+                </ul>
+              </div>
+              <div className="icon">
+                <a href={github && github.length > 0 ? github[0] : video} target="__blank">
+                  {github && github.length > 0 ? <GitHubIcon /> : <YouTubeIcon />}
+                </a>
+                <a href={external} target="__blank">
+                  <OpenInNewIcon />
+                </a>
+              </div>
+            </Box>
+          );
+        })}
       </ProjectContainer>
       <button className="btn" onClick={() => setShow(!show)}>
         Show {show ? "Less" : "More"}
