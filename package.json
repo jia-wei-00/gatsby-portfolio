@@ -39,6 +39,9 @@
     "react-transition-group": "^4.4.5",
     "styled-components": "^5.3.11"
   },
+  "engines": {
+    "node": "22.x"
+  },
   "overrides": {
     "msgpackr": "2.0.1",
     "ordered-binary": "1.6.1"
