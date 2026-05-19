@@ -1,6 +1,6 @@
 ---
 date: "3"
-title: "Expenses Tracker (AI Agent)"
+title: "Expenses Tracker (AI Assistant)"
 cover: "./demo.png"
 github:
   - "https://github.com/jia-wei-00/expense-tracker-worker"
@@ -19,4 +19,4 @@ tech:
 slug: "featured"
 ---
 
-An AI-powered expense tracker where you chat with an agent using text or images to automatically log and update your expenses — powered by a Cloudflare Workers backend.
+An AI-powered expense tracker where you chat with an assistant using text or images to automatically log and update your expenses — powered by a Cloudflare Workers backend.
