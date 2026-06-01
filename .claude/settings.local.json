@@ -6,7 +6,19 @@
       "Bash(npm outdated *)",
       "Bash(npm install *)",
       "Bash(npm list *)",
-      "Bash(npm show *)"
+      "Bash(npm show *)",
+      "Bash(Remove-Item -Recurse -Force \"src\\\\pages\" -ErrorAction SilentlyContinue)",
+      "Bash(Remove-Item -Force \"src\\\\App.css\" -ErrorAction SilentlyContinue)",
+      "Bash(Remove-Item -Force \"src\\\\index.css\" -ErrorAction SilentlyContinue)",
+      "Bash(Remove-Item -Recurse -Force \"src\\\\assets\" -ErrorAction SilentlyContinue)",
+      "Bash(Remove-Item -Force \"gatsby-config.js\" -ErrorAction SilentlyContinue)",
+      "PowerShell(Remove-Item *)",
+      "Bash(npx tsc *)",
+      "Bash(\"main|\"module')",
+      "Bash(node -e \"const p = require\\('./node_modules/react/package.json'\\); console.log\\('react:', p.version\\)\")",
+      "Bash(node -e \"const p = require\\('./node_modules/styled-components/package.json'\\); console.log\\('styled-components:', p.version\\)\")",
+      "Bash(node -e \"const p = require\\('./node_modules/framer-motion/package.json'\\); console.log\\('framer-motion:', p.version\\)\")",
+      "Bash(node *)"
     ]
   }
 }

@@ -1,8 +1,6 @@
-import React from "react";
-import "../styles/global.css";
+import "./styles/global.css";
 import {
   Layout,
-  Intro,
   About,
   Work,
   Featured,
@@ -11,12 +9,11 @@ import {
   SocialIcons,
   Footer,
 } from "@components";
-import { useBreakpoint } from "gatsby-plugin-breakpoints";
+import { useBreakpoint } from "./hooks/useBreakpoint";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { ScrollingProvider, Section } from "react-scroll-section";
-import { Helmet } from "react-helmet";
-import { graphql } from "gatsby";
 import { Analytics } from "@vercel/analytics/react";
+import Intro from "./components/sections/Intro";
 
 const theme = createTheme({
   palette: {
@@ -29,22 +26,12 @@ const theme = createTheme({
   },
 });
 
-export default function Home({ data }) {
+function App() {
   const breakpoints = useBreakpoint();
-
-  const { favicon, title } = data.site.siteMetadata;
 
   return (
     <ThemeProvider theme={theme}>
       <Analytics />
-      <Helmet>
-        <meta name="icon" href={favicon} />
-        <meta
-          name="google-site-verification"
-          content="DDRi_eR5BjqBNxcVQ8-IzV7B6He_W3r89WjdmRhY99k"
-        />
-        <title>{title}</title>
-      </Helmet>
       <ScrollingProvider>
         <Layout>
           {breakpoints.xl ? <Intro /> : null}
@@ -69,13 +56,4 @@ export default function Home({ data }) {
   );
 }
 
-export const data = graphql`
-  query {
-    site {
-      siteMetadata {
-        favicon
-        title
-      }
-    }
-  }
-`;
+export default App;

@@ -1,11 +1,10 @@
-import { Link } from "gatsby";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { Logo } from "@components";
+import Logo from "./Logo";
 
 function useScrollDirection() {
-  const [scrollDirection, setScrollDirection] = useState(null);
+  const [scrollDirection, setScrollDirection] = useState<string | null>(null);
 
   useEffect(() => {
     let lastScrollY = window.pageYOffset;
@@ -21,10 +20,8 @@ function useScrollDirection() {
       }
       lastScrollY = scrollY > 0 ? scrollY : 0;
     };
-    window.addEventListener("scroll", updateScrollDirection); // add event listener
-    return () => {
-      window.removeEventListener("scroll", updateScrollDirection); // clean up
-    };
+    window.addEventListener("scroll", updateScrollDirection);
+    return () => window.removeEventListener("scroll", updateScrollDirection);
   }, [scrollDirection]);
 
   return scrollDirection;
@@ -37,74 +34,101 @@ const Navbar = () => {
   useEffect(() => {
     const header = document.getElementById("myHeader");
     if (header) {
-      const sticky = header.offsetHeight - 50;
-      const scrollCallBack = window.addEventListener("scroll", () => {
-        if (window.pageYOffset > sticky) {
+      const stickyOffset = header.offsetHeight - 50;
+      const scrollCallBack = () => {
+        if (window.pageYOffset > stickyOffset) {
           setSticky(true);
         } else {
           setSticky(false);
         }
-      });
-      return () => {
-        window.removeEventListener("scroll", scrollCallBack);
       };
+      window.addEventListener("scroll", scrollCallBack);
+      return () => window.removeEventListener("scroll", scrollCallBack);
     }
   }, [sticky]);
 
   return (
     <>
       {!sticky ? (
-        <motion.div initial={{ opacity: 0, y: -30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+        <motion.div
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
           <Nav id="myHeader">
             <ul>
-              <Link to="/#about" className="link">
+              <a href="#about" className="link">
                 <li>
                   <p>1</p>
                   <p>About</p>
                 </li>
-              </Link>
-              <Link to="/#work" className="link">
+              </a>
+              <a href="#work" className="link">
                 <li>
                   <p>2</p>
                   <p>Work</p>
                 </li>
-              </Link>
-              <Link to="/#project" className="link">
+              </a>
+              <a href="#project" className="link">
                 <li>
                   <p>3</p>
                   <p>Projects</p>
                 </li>
-              </Link>
-              <Link to="/#contact" className="link">
+              </a>
+              <a href="#contact" className="link">
                 <li>
                   <p>4</p>
                   <p>Contact</p>
                 </li>
-              </Link>
+              </a>
             </ul>
           </Nav>
         </motion.div>
       ) : null}
 
       {sticky ? (
-        <StickyNav scroll={scrollDirection}>
+        <StickyNav $scroll={scrollDirection}>
           <Logo />
-          <Link to="/#about" className="link">
+          <a href="#about" className="link">
             <span>1</span>
-            <motion.span initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>About</motion.span>
-          </Link>
-          <Link to="/#work" className="link">
+            <motion.span
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              About
+            </motion.span>
+          </a>
+          <a href="#work" className="link">
             <span>2</span>
-            <motion.span initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>Work</motion.span>
-          </Link>
-          <Link to="/#project" className="link">
+            <motion.span
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              Work
+            </motion.span>
+          </a>
+          <a href="#project" className="link">
             <span>3</span>
-            <motion.span initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>Projects</motion.span>
-          </Link>
-          <Link to="/#contact" className="link">
+            <motion.span
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              Projects
+            </motion.span>
+          </a>
+          <a href="#contact" className="link">
             <span>4</span>
-            <motion.span initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>Contact</motion.span>
-          </Link>
+            <motion.span
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              Contact
+            </motion.span>
+          </a>
         </StickyNav>
       ) : null}
     </>
@@ -133,12 +157,7 @@ const Nav = styled.div`
     & > a > li {
       cursor: pointer;
       height: 100%;
-      background: linear-gradient(
-        130deg,
-        transparent,
-        var(--color-primary),
-        transparent
-      );
+      background: linear-gradient(130deg, transparent, var(--color-primary), transparent);
       min-width: 11rem;
       transition: var(--transition);
       box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
@@ -174,7 +193,7 @@ const Nav = styled.div`
   }
 `;
 
-const StickyNav = styled.div`
+const StickyNav = styled.div<{ $scroll: string | null }>`
   display: flex;
   justify-content: right;
   z-index: 10;
@@ -185,8 +204,8 @@ const StickyNav = styled.div`
   right: 0;
   left: 0;
   transition: var(--transition);
-  transform: ${(props) =>
-    props.scroll === "down" ? `translateY(-100%)` : null};
+  transform: ${({ $scroll }) =>
+    $scroll === "down" ? "translateY(-100%)" : null};
 
   & > div:first-child {
     position: absolute;
@@ -200,12 +219,7 @@ const StickyNav = styled.div`
     min-width: 11rem;
     text-align: left;
     padding: 20px;
-    background: linear-gradient(
-      130deg,
-      transparent,
-      var(--color-primary),
-      transparent
-    );
+    background: linear-gradient(130deg, transparent, var(--color-primary), transparent);
     border-bottom-left-radius: 10px;
 
     & > span:first-child {

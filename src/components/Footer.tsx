@@ -1,20 +1,13 @@
-import React from "react";
 import styled from "styled-components";
 
-const Footer = () => {
-  return (
-    <Container>
-      Inspired by
-      <a
-        className="link"
-        href="https://github.com/bchiang7/v4"
-        target="__blank"
-      >
-        Brittany Chiang
-      </a>
-    </Container>
-  );
-};
+const Footer = () => (
+  <Container>
+    Inspired by
+    <a className="link" href="https://github.com/bchiang7/v4" target="__blank">
+      Brittany Chiang
+    </a>
+  </Container>
+);
 
 const Container = styled.div`
   display: flex;

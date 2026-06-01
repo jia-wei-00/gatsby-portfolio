@@ -1,0 +1,47 @@
+[
+  {
+    "date": "2025-9-23",
+    "title": "Specialist, Frontend Developer",
+    "company": "TNG DIGITAL",
+    "location": "Bangsar South, Kuala Lumpur",
+    "range": "September 2025 - Present",
+    "url": "https://www.touchngo.com.my/ewallet/",
+    "html": "<ul>\n<li>Built and maintained web application projects in TNG app using Vite, Vue 3, Pinia, and TypeScript, following a modular and scalable frontend architecture.</li>\n<li>Maintained and developed TNG Mini Programs within the tngd-mobile project, building responsive and interactive in-app experiences using Vue.js, TypeScript, and support on Mini Program platform</li>\n<li>Supported the full SDLC from PRD review and TSD documentation preparation through technical analysis, development, testing, and production deployment support.</li>\n<li>Supported production releases on duty and tracked security compliance using Polaris and Black Duck, performing SCA and SAST measurements to strengthen application security and release readiness</li>\n<li>Leveraged Cursor AI to support feature development, accelerate implementation, and improve development efficiency.</li>\n<li>Contributed to a government project by supporting requirements analysis, development, testing, and delivery while working within formal project and compliance standards.</li>\n</ul>"
+  },
+  {
+    "date": "2023-8-25",
+    "title": "Frontend Developer",
+    "company": "Deriv",
+    "location": "Cyberjaya, Selangor",
+    "range": "Aug 2023 - Present",
+    "url": "https://deriv.com/",
+    "html": "<ul>\n<li>Developed a back-office system and enhanced the Partner website UI using OutSystems, enabling seamless event management and API integration.</li>\n<li>Developed and maintained design system components for Deriv's products.</li>\n<li>Collaborated with cross-functional teams to ensure consistency in user interfaces.</li>\n<li>Implemented responsive and user-friendly front-end interfaces using Next.js and Gatsby and React.</li>\n<li>Conducted code reviews and provided feedback to maintain code quality.</li>\n<li>Stayed updated on emerging front-end technologies and best practices.</li>\n<li>Contributed to agile development methodologies and version control systems like Git.</li>\n</ul>"
+  },
+  {
+    "date": "2023-7-25",
+    "title": "Graduate Trainee",
+    "company": "Besquare Deriv",
+    "location": "Cyberjaya, Selangor",
+    "range": "Mar 2023 - Jul 2023",
+    "url": "https://deriv.com/",
+    "html": "<br />\n<p>Product Design:</p>\n<ul>\n<li>Understanding user needs and requirements.</li>\n<li>Creating user personas and user journeys.</li>\n<li>Wireframing and prototyping product ideas.</li>\n<li>Conducting usability testing and gathering feedback for improvements.</li>\n</ul>\n<br />\n<p>Front-end Module:</p>\n<ul>\n<li>HTML, CSS, and JavaScript fundamentals.</li>\n<li>Build responsive and interactive user interfaces.</li>\n<li>Implement modern design frameworks and libraries, such as React and TypeScript.</li>\n<li>Utilize state management using Mobx for efficient data handling.</li>\n</ul>\n<br />\n<p>Mobile Module:</p>\n<ul>\n<li>Develop mobile applications for Android platforms.</li>\n<li>Learn to build mobile apps using Flutter.</li>\n<li>Utilizing Cubit for state management.</li>\n<li>Discover how to use Flutter widgets effectively.</li>\n</ul>\n<br />\n<p>Backend Module:</p>\n<ul>\n<li>Comprehend server-side architecture and database design.</li>\n<li>Work with server-side programming languages like Node.js and SQL.</li>\n<li>Building RESTful APIs for communication between front-end and back-end.</li>\n<li>Acquire knowledge in Test-Driven Development (TDD) and the MVC (Model-View-Controller) pattern.</li>\n</ul>\n<br />\n<p>Quality Assurance Module:</p>\n<ul>\n<li>Identify and write comprehensive test cases for website components.</li>\n<li>Conduct thorough manual and automated testing of applications.</li>\n<li>Skillfully debug and report defects, ensuring efficient issue resolution.</li>\n<li>Prioritize software quality and reliability through rigorous testing processes.</li>\n</ul>"
+  },
+  {
+    "date": "2022-7-1",
+    "title": "Web Developer",
+    "company": "Top Click",
+    "location": "Ipoh, Perak",
+    "range": "Jun 2022 - Feb 2023",
+    "url": "https://topclickweb.com/",
+    "html": "<ul>\n<li>Help SMEs launch a profitable e-commerce store.</li>\n<li>Meeting with clients to discuss website design and function.</li>\n<li>Designing and building the website front-end.</li>\n<li>Generating WordPress themes and plugins.</li>\n<li>Convert visual design into responsive website.</li>\n</ul>"
+  },
+  {
+    "date": "2022-3-08",
+    "title": "Intern Software Developer",
+    "company": "W Tech",
+    "location": "Ipoh, Perak",
+    "range": "Sep 2021 - Mar 2022",
+    "url": "https://www.wtech.software/",
+    "html": "<ul>\n<li>Involved in PHP project on frontend and backend development.</li>\n<li>Create solidity smart contract for <a class=\"link\" href=\"https://gamedev.space-alpaca.com/\" target=\"_blank\">GameFi</a> project and test it on testnet. Use Web3 to connect the front-end to the smart contract.</li>\n<li>Research and develop on Telegram bot.</li>\n</ul>"
+  }
+]

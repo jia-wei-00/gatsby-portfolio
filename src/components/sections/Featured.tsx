@@ -1,115 +1,64 @@
-import { graphql, useStaticQuery } from "gatsby";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import React from "react";
 import styled from "styled-components";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import { motion } from "framer-motion";
+import { featuredProjects } from "../../data/featured";
 
-const Featured = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query {
-      projects: allMarkdownRemark(
-        filter: { frontmatter: { slug: { eq: "featured" } } }
-        sort: { frontmatter: { date: DESC } }
-      ) {
-        edges {
-          node {
-            frontmatter {
-              external
-              github
-              cover {
-                childImageSharp {
-                  gatsbyImageData(
-                    layout: FULL_WIDTH
-                    formats: AUTO
-                    placeholder: BLURRED
-                    height: 300
-                  )
-                }
-              }
-              tech
-              title
-              video
-            }
-            html
-          }
-        }
-      }
-    }
-  `);
+const Featured = () => (
+  <div className="container">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+    >
+      <h2 className="numbered-heading">Featured Projects</h2>
+    </motion.div>
+    <Container>
+      {featuredProjects.map(({ cover, external, github, title, video, tech, html }, i) => (
+        <ProjectContainer key={i}>
+          <Image src={cover} alt={title} className="image" />
+          <Project className="project">
+            <h3>{title}</h3>
+            <div dangerouslySetInnerHTML={{ __html: html }} />
+            <ul className="tech">
+              {tech.map((t, j) => (
+                <li key={j}>{t}</li>
+              ))}
+            </ul>
+            <div className="icon-wrapper">
+              {github ? (
+                github.map((item, j) => (
+                  <a key={j} href={item} target="_blank" rel="noreferrer">
+                    <GitHubIcon />
+                  </a>
+                ))
+              ) : (
+                <a href={video} target="_blank" rel="noreferrer">
+                  <YouTubeIcon />
+                </a>
+              )}
+              <a href={external} target="_blank" rel="noreferrer">
+                <OpenInNewIcon />
+              </a>
+            </div>
+          </Project>
+        </ProjectContainer>
+      ))}
+    </Container>
+  </div>
+);
 
-  const projects = data.projects.edges;
-
-  return (
-    <div className="container">
-      {children}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-      >
-        <h2 className="numbered-heading">Featured Projects</h2>
-      </motion.div>
-      <Container>
-        {projects &&
-          projects.map(({ node }, i) => {
-            const { cover, external, github, title, video, tech } =
-              node.frontmatter;
-
-            const html = node.html;
-
-            return (
-              <ProjectContainer key={i}>
-                <Image
-                  image={getImage(cover.childImageSharp)}
-                  className="image"
-                />
-                <Project className="project">
-                  <h3>{title}</h3>
-                  <div dangerouslySetInnerHTML={{ __html: html }} />
-                  <ul className="tech">
-                    {tech.map((tech, i) => {
-                      return <li key={i}>{tech}</li>;
-                    })}
-                  </ul>
-                  <div className="icon-wrapper">
-                    {github ? (
-                      github.map((item, i) => (
-                        <a key={i} href={item} target="_blank" rel="noreferrer">
-                          <GitHubIcon />
-                        </a>
-                      ))
-                    ) : (
-                      <a href={video} target="_blank" rel="noreferrer">
-                        <YouTubeIcon />
-                      </a>
-                    )}
-                    <a href={external} target="_blank" rel="noreferrer">
-                      <OpenInNewIcon />
-                    </a>
-                  </div>
-                </Project>
-              </ProjectContainer>
-            );
-          })}
-      </Container>
-    </div>
-  );
-};
-
-const Image = styled(GatsbyImage)`
-  height: 50vh;
+const Image = styled.img`
   border-radius: 20px;
-  width: 100%;
   transition: var(--transition);
   filter: grayscale(70%) blur(3px) brightness(40%);
   position: absolute;
   width: 50%;
   height: 100%;
   left: 0;
+  object-fit: cover;
 
   @media (max-width: 768px) {
     position: relative;
@@ -193,12 +142,7 @@ const Project = styled.div`
   display: grid;
   column-gap: 10px;
   row-gap: 25px;
-  background: linear-gradient(
-    130deg,
-    transparent,
-    var(--color-primary),
-    transparent
-  );
+  background: linear-gradient(130deg, transparent, var(--color-primary), transparent);
   border: 1px solid var(--color-brighter);
   padding: 20px;
   border-radius: 20px;
@@ -244,7 +188,6 @@ const Project = styled.div`
     flex-wrap: wrap;
     position: relative;
     z-index: 2;
-    /* margin: 25px 0 10px; */
     padding: 0;
     list-style: none;
 
@@ -256,8 +199,6 @@ const Project = styled.div`
     }
 
     @media (max-width: 768px) {
-      /* margin: 10px 0; */
-
       li {
         margin: 0 10px 5px 0;
         color: var(--color-lighter);

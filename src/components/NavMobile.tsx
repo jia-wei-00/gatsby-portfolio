@@ -1,67 +1,55 @@
-import React from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import PersonIcon from "@mui/icons-material/Person";
 import WorkHistoryIcon from "@mui/icons-material/WorkHistory";
 import PendingActionsIcon from "@mui/icons-material/PendingActions";
 import ContactMailIcon from "@mui/icons-material/ContactMail";
-import { useScrollSection } from "react-scroll-section";
+import { ScrollContext } from "react-scroll-section";
 
-const NavMobile = ({ section }) => {
-  const aboutSection = useScrollSection("about");
-  const workSection = useScrollSection("work");
-  const projectSection = useScrollSection("project");
-  const contactSection = useScrollSection("contact");
+type SectionId = "about" | "work" | "project" | "contact" | null;
+
+const NavMobile = () => {
+  const { scrollTo, selected } = useContext(ScrollContext);
+  const activeSection = selected as SectionId;
 
   return (
-    <Navigation
-      section={
-        aboutSection.selected
-          ? "about"
-          : workSection.selected
-          ? "work"
-          : projectSection.selected
-          ? "project"
-          : contactSection.selected
-          ? "contact"
-          : null
-      }
-    >
-      <Section
-        onClick={aboutSection.onClick}
-        className={aboutSection.selected && "active"}
+    <Navigation $section={activeSection}>
+      <NavSection
+        onClick={() => scrollTo("about")}
+        className={selected === "about" ? "active" : undefined}
       >
         <span>
           <PersonIcon />
         </span>
         <span>About</span>
-      </Section>
-      <Section
-        onClick={workSection.onClick}
-        className={workSection.selected && "active"}
+      </NavSection>
+      <NavSection
+        onClick={() => scrollTo("work")}
+        className={selected === "work" ? "active" : undefined}
       >
         <span>
           <WorkHistoryIcon />
         </span>
         <span>Work</span>
-      </Section>
-      <Section
-        onClick={projectSection.onClick}
-        className={projectSection.selected && "active"}
+      </NavSection>
+      <NavSection
+        onClick={() => scrollTo("project")}
+        className={selected === "project" ? "active" : undefined}
       >
         <span>
           <PendingActionsIcon />
         </span>
         <span>Projects</span>
-      </Section>
-      <Section
-        onClick={contactSection.onClick}
-        className={contactSection.selected && "active"}
+      </NavSection>
+      <NavSection
+        onClick={() => scrollTo("contact")}
+        className={selected === "contact" ? "active" : undefined}
       >
         <span>
           <ContactMailIcon />
         </span>
         <span>Contact</span>
-      </Section>
+      </NavSection>
       <div className="indicator"></div>
     </Navigation>
   );
@@ -69,7 +57,7 @@ const NavMobile = ({ section }) => {
 
 export default NavMobile;
 
-const Navigation = styled.div`
+const Navigation = styled.div<{ $section: SectionId }>`
   background: rgba(0, 0, 0, 0.3);
   width: max-content;
   padding: 0.7rem 1.7rem;
@@ -91,20 +79,11 @@ const Navigation = styled.div`
     background: var(--color-primary);
     border-radius: 50%;
     transition: 0.5s;
-    transform: ${(props) => {
-      if (props.section === "work") {
-        return `
-          translateX(65px);
-        `;
-      } else if (props.section === "project") {
-        return `
-          translateX(calc(65px * 2));
-        `;
-      } else if (props.section === "contact") {
-        return `
-          translateX(calc(65px * 3));
-        `;
-      }
+    transform: ${({ $section }) => {
+      if ($section === "work") return "translateX(65px)";
+      if ($section === "project") return "translateX(calc(65px * 2))";
+      if ($section === "contact") return "translateX(calc(65px * 3))";
+      return undefined;
     }};
   }
 
@@ -130,7 +109,7 @@ const Navigation = styled.div`
   }
 `;
 
-const Section = styled.li`
+const NavSection = styled.li`
   display: grid;
   grid-template-columns: 1fr;
   position: relative;

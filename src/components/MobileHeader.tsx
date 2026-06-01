@@ -1,13 +1,16 @@
-import { Logo } from "@components";
-import React, { useState, useEffect } from "react";
+import Logo from "./Logo";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { graphql, useStaticQuery } from "gatsby";
-import { useBreakpoint } from "gatsby-plugin-breakpoints";
-import { Github, Linkedin, Whatsapp } from "./Svg.js";
+import { Github, Linkedin, Whatsapp } from "./Svg";
 import { motion } from "framer-motion";
+import { siteMetadata } from "../data/siteMetadata";
+import { useBreakpoint } from "../hooks/useBreakpoint";
+import resumeUrl from "../images/leong_jia_wei.pdf?url";
+
+const { linkedin, github, whatsapp } = siteMetadata;
 
 function useScrollDirection() {
-  const [scrollDirection, setScrollDirection] = useState(null);
+  const [scrollDirection, setScrollDirection] = useState<string | null>(null);
 
   useEffect(() => {
     let lastScrollY = window.pageYOffset;
@@ -23,10 +26,8 @@ function useScrollDirection() {
       }
       lastScrollY = scrollY > 0 ? scrollY : 0;
     };
-    window.addEventListener("scroll", updateScrollDirection); // add event listener
-    return () => {
-      window.removeEventListener("scroll", updateScrollDirection); // clean up
-    };
+    window.addEventListener("scroll", updateScrollDirection);
+    return () => window.removeEventListener("scroll", updateScrollDirection);
   }, [scrollDirection]);
 
   return scrollDirection;
@@ -35,25 +36,9 @@ function useScrollDirection() {
 const MobileHeader = () => {
   const breakpoints = useBreakpoint();
   const scrollDirection = useScrollDirection();
-  const data = useStaticQuery(graphql`
-    query {
-      file(relativePath: { eq: "leong_jia_wei.pdf" }) {
-        publicURL
-      }
-      site {
-        siteMetadata {
-          linkedin
-          github
-          whatsapp
-        }
-      }
-    }
-  `);
-
-  const { linkedin, github, whatsapp } = data.site.siteMetadata;
 
   return (
-    <Container scroll={scrollDirection}>
+    <Container $scroll={scrollDirection}>
       <div>
         <Logo />
 
@@ -83,7 +68,6 @@ const MobileHeader = () => {
                 <Github />
               </a>
             </motion.div>
-
             <motion.div
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: [1, 1.2, 1] }}
@@ -98,7 +82,7 @@ const MobileHeader = () => {
         ) : null}
 
         <button>
-          <a className="link" href={data.file.publicURL} target="__blank">
+          <a className="link" href={resumeUrl} target="__blank">
             Resume
           </a>
         </button>
@@ -107,10 +91,9 @@ const MobileHeader = () => {
   );
 };
 
-const Container = styled.div`
+const Container = styled.div<{ $scroll: string | null }>`
   animation-name: slidedown;
   animation-duration: 0.5s;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -123,8 +106,8 @@ const Container = styled.div`
   -webkit-box-shadow: -1px 1px 14px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: -1px 1px 14px 0px rgba(0, 0, 0, 0.75);
   transition: var(--transition);
-  transform: ${(props) =>
-    props.scroll === "down" ? `translateY(-100%)` : null};
+  transform: ${({ $scroll }) =>
+    $scroll === "down" ? "translateY(-100%)" : null};
 
   & > div {
     width: 95%;

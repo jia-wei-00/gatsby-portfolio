@@ -1,10 +1,12 @@
-import React from "react";
+import type { ReactNode } from "react";
 import styled from "styled-components";
-import { useBreakpoint } from "gatsby-plugin-breakpoints";
-import { Navbar, NavMobile, MobileHeader } from "@components";
+import { useBreakpoint } from "../hooks/useBreakpoint";
+import Navbar from "./Navbar";
+import NavMobile from "./NavMobile";
+import MobileHeader from "./MobileHeader";
 import Intro from "./sections/Intro";
 
-const Layout = ({ children, section }) => {
+const Layout = ({ children }: { children: ReactNode }) => {
   const breakpoints = useBreakpoint();
 
   return (
@@ -12,12 +14,12 @@ const Layout = ({ children, section }) => {
       {breakpoints.xl ? (
         <>
           <MobileHeader />
-          <NavMobile section={section} />
+          <NavMobile />
         </>
       ) : (
         <Wrapper>
           <Intro />
-          <Navbar section={section} />
+          <Navbar />
         </Wrapper>
       )}
       {children}

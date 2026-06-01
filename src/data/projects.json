@@ -1,0 +1,58 @@
+[
+  {
+    "title": "Coin Watch",
+    "github": ["https://github.com/jia-wei-00/Error-404"],
+    "external": "https://coin-watch-six.vercel.app/",
+    "tech": ["React", "MobX", "Axios", "Scss"],
+    "html": "<p>A cryptocurrency tracking website that provides data on the latest cryptocurrency prices, market capitalization, and trading volumes, etc.</p>"
+  },
+  {
+    "title": "React Calculator",
+    "github": ["https://github.com/jia-wei-00/react-calculator"],
+    "external": "https://jia-wei-react-calculator.vercel.app/",
+    "tech": ["React", "Css"],
+    "html": "<p>A simple calculator build with react.</p>"
+  },
+  {
+    "title": "Final Year Project",
+    "video": "https://www.youtube.com/watch?v=ytDhM4cPvas",
+    "external": "https://jiawei01.itch.io/tridemic",
+    "tech": ["Unity", "C#"],
+    "html": "<p>A final year project — an educational game to raise awareness of epidemiology through quiz-based levels with in-game hints.</p>"
+  },
+  {
+    "title": "Movie Search Engine",
+    "github": ["https://github.com/jia-wei-00/movie-searching-engine"],
+    "external": "https://movie-searching-engine.vercel.app/",
+    "tech": ["React", "MobX", "Axios", "Styled Components"],
+    "html": "<p>A simple movie search engine using OMDb API</p>"
+  },
+  {
+    "title": "Linkedin Clone",
+    "github": ["https://github.com/jia-wei-00/linkedin-clone/"],
+    "external": "https://jia-wei-00.github.io/linkedin-clone/",
+    "tech": ["React", "Redux", "Firebase", "Styled Components"],
+    "html": "<p>Linkedin clone with firebase google authentication and post article function.</p>"
+  },
+  {
+    "title": "Todo App React",
+    "github": ["https://github.com/jia-wei-00/convert-besquare-todo"],
+    "external": "https://todo-app-react-jia-wei-00.vercel.app/",
+    "tech": ["React", "Redux"],
+    "html": "<p>Todo app build by react framework</p>"
+  },
+  {
+    "title": "Amazon Clone",
+    "github": ["https://github.com/jia-wei-00/amazon-clone/"],
+    "external": "https://jia-wei-00.github.io/amazon-clone/",
+    "tech": ["React", "Redux", "Firebase"],
+    "html": "<p>Amazon Clone with add to cart function and firebase authentication</p>"
+  },
+  {
+    "title": "Tesla Clone",
+    "github": ["https://github.com/jia-wei-00/tesla-clone/"],
+    "external": "https://jia-wei-00.github.io/tesla-clone/",
+    "tech": ["React", "Redux", "Styled Components"],
+    "html": "<p>Tesla clone frontpage with menu using react and redux</p>"
+  }
+]

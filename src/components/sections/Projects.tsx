@@ -1,77 +1,46 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
-import { useStaticQuery, graphql } from "gatsby";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { motion } from "framer-motion";
+import { projects } from "../../data/projects";
 
-const Projects = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query {
-      projects: allMarkdownRemark(
-        filter: { frontmatter: { slug: { eq: "project" } } }
-        sort: { frontmatter: { date: ASC } }
-      ) {
-        edges {
-          node {
-            frontmatter {
-              title
-              github
-              video
-              external
-              tech
-            }
-            html
-          }
-        }
-      }
-    }
-  `);
-
-  const projects = data.projects.edges;
-
+const Projects = () => {
   const [show, setShow] = useState(false);
 
   return (
     <Container className="container">
-      {children}
       <h3>More Projects</h3>
       <ProjectContainer>
-        {projects.slice(0, show ? 999 : 6).map((project, i) => {
-          const { title, github, external, tech, video } =
-            project.node.frontmatter;
-          const html = project.node.html;
-
-          return (
-            <Box
-              as={motion.div}
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="info">
-                <h3>{title}</h3>
-                <div dangerouslySetInnerHTML={{ __html: html }} />
-                <ul className="tech">
-                  {tech.map((tech, i) => {
-                    return <li key={i}>{tech}</li>;
-                  })}
-                </ul>
-              </div>
-              <div className="icon">
-                <a href={github && github.length > 0 ? github[0] : video} target="__blank">
-                  {github && github.length > 0 ? <GitHubIcon /> : <YouTubeIcon />}
-                </a>
-                <a href={external} target="__blank">
-                  <OpenInNewIcon />
-                </a>
-              </div>
-            </Box>
-          );
-        })}
+        {projects.slice(0, show ? 999 : 6).map(({ title, github, external, tech, video, html }, i) => (
+          <Box
+            as={motion.div}
+            key={i}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="info">
+              <h3>{title}</h3>
+              <div dangerouslySetInnerHTML={{ __html: html }} />
+              <ul className="tech">
+                {tech.map((t, j) => (
+                  <li key={j}>{t}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="icon">
+              <a href={github && github.length > 0 ? github[0] : video} target="__blank">
+                {github && github.length > 0 ? <GitHubIcon /> : <YouTubeIcon />}
+              </a>
+              <a href={external} target="__blank">
+                <OpenInNewIcon />
+              </a>
+            </div>
+          </Box>
+        ))}
       </ProjectContainer>
       <button className="btn" onClick={() => setShow(!show)}>
         Show {show ? "Less" : "More"}
@@ -83,7 +52,6 @@ const Projects = ({ children }) => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-
   align-items: center;
 `;
 
