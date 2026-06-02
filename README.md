@@ -1,73 +1,96 @@
-# React + TypeScript + Vite
+# Jia Wei — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio website built with React, TypeScript, and Vite. Features a floating AI chatbot powered by a LangChain backend.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React 19** + **TypeScript 6**
+- **Vite 8** — build tool & dev server
+- **styled-components v6** — component styling
+- **framer-motion** — animations
+- **MUI v7** — icons and UI components
+- **react-scroll-section** — scroll-based section navigation
+- **react-markdown** — markdown rendering in chatbot
+- **usehooks-ts** — `useSessionStorage` for chatbot session persistence
+- **Vercel Analytics** — usage analytics
 
-## React Compiler
+## Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Prerequisites
 
-## Expanding the ESLint configuration
+- Node.js >= 22.x
+- npm
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Installation
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Environment Variables
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Copy `.env.example` to `.env` and fill in your values:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+cp .env.example .env
 ```
+
+| Variable | Description |
+|---|---|
+| `VITE_CHAT_API_URL` | URL of the LangChain chat API endpoint |
+
+### Development
+
+```bash
+npm run dev
+```
+
+### Build
+
+```bash
+npm run build
+```
+
+### Preview production build
+
+```bash
+npm run preview
+```
+
+## Project Structure
+
+```
+src/
+├── components/         # UI components
+│   ├── sections/       # Page sections (About, Work, Featured, Projects, Contact)
+│   ├── Chatbot.tsx     # Floating AI chatbot
+│   ├── Layout.tsx      # App layout (desktop/mobile)
+│   ├── Navbar.tsx      # Desktop navigation
+│   ├── NavMobile.tsx   # Mobile bottom navigation
+│   └── ...
+├── data/               # Static content as JSON + TS wrappers
+│   ├── jobs.json
+│   ├── projects.json
+│   ├── featured.json
+│   ├── about.json
+│   └── siteMetadata.json
+├── hooks/
+│   └── useBreakpoint.ts  # Responsive breakpoint hook
+├── styles/
+│   └── global.css
+└── App.tsx
+```
+
+## Chatbot
+
+The floating chatbot (bottom-right) connects to a LangChain backend. It uses session-based memory via `sessionStorage` so conversation history persists across page refreshes within the same tab.
+
+Set `VITE_CHAT_API_URL` in your `.env` for local development, and add it as an environment variable in your Vercel project settings for production.
+
+## Deployment
+
+Deployed on **Vercel**. Push to `master` to trigger a deployment.
+
+Set the following in Vercel project settings under **Environment Variables**:
+
+- `VITE_CHAT_API_URL` — production chat API URL

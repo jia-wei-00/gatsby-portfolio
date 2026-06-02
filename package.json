@@ -18,8 +18,10 @@
     "framer-motion": "^12.12.1",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
+    "react-markdown": "^10.1.0",
     "react-scroll-section": "^2.0.1",
-    "styled-components": "^6.1.18"
+    "styled-components": "^6.1.18",
+    "usehooks-ts": "^3.1.1"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

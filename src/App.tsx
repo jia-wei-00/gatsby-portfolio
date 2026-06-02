@@ -8,6 +8,7 @@ import {
   Contact,
   SocialIcons,
   Footer,
+  Chatbot,
 } from "@components";
 import { useBreakpoint } from "./hooks/useBreakpoint";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -51,6 +52,7 @@ function App() {
           {breakpoints.sm ? null : <SocialIcons />}
           <Footer />
         </Layout>
+        <Chatbot />
       </ScrollingProvider>
     </ThemeProvider>
   );
