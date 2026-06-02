@@ -1,5 +1,12 @@
 [
   {
+    "title": "GameFi Project",
+    "github": ["https://github.com/jia-wei-00/blockchain/"],
+    "external": "https://jia-wei-00.github.io/blockchain/",
+    "tech": ["React", "Styled Components", "Redux", "Web3", "Solidity"],
+    "html": "<p>A GameFi project deploy on binance smart chain testnet with random rarity character upon open card. Player can sell and buy character at marketplace.</p>"
+  },
+  {
     "title": "Coin Watch",
     "github": ["https://github.com/jia-wei-00/Error-404"],
     "external": "https://coin-watch-six.vercel.app/",

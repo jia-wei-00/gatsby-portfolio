@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { useSessionStorage } from "usehooks-ts";
 import ReactMarkdown from "react-markdown";
 import styled, { keyframes } from "styled-components";
-import ChatIcon from "@mui/icons-material/Chat";
+import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import CloseIcon from "@mui/icons-material/Close";
 import SendIcon from "@mui/icons-material/Send";
 
@@ -139,7 +139,7 @@ const Chatbot = () => {
       )}
 
       <Fab onClick={() => setIsOpen((o) => !o)} $open={isOpen}>
-        {isOpen ? <CloseIcon /> : <ChatIcon />}
+        {isOpen ? <CloseIcon /> : <AutoAwesomeIcon />}
       </Fab>
     </>
   );

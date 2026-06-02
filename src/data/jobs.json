@@ -6,14 +6,14 @@
     "location": "Bangsar South, Kuala Lumpur",
     "range": "September 2025 - Present",
     "url": "https://www.touchngo.com.my/ewallet/",
-    "html": "<ul>\n<li>Built and maintained web application projects in TNG app using Vite, Vue 3, Pinia, and TypeScript, following a modular and scalable frontend architecture.</li>\n<li>Maintained and developed TNG Mini Programs within the tngd-mobile project, building responsive and interactive in-app experiences using Vue.js, TypeScript, and support on Mini Program platform</li>\n<li>Supported the full SDLC from PRD review and TSD documentation preparation through technical analysis, development, testing, and production deployment support.</li>\n<li>Supported production releases on duty and tracked security compliance using Polaris and Black Duck, performing SCA and SAST measurements to strengthen application security and release readiness</li>\n<li>Leveraged Cursor AI to support feature development, accelerate implementation, and improve development efficiency.</li>\n<li>Contributed to a government project by supporting requirements analysis, development, testing, and delivery while working within formal project and compliance standards.</li>\n</ul>"
+    "html": "<ul>\n<li>Built and maintained web application projects in TNG app using Vite, Vue 3, Pinia, and TypeScript, following a modular and scalable frontend architecture.</li>\n<li>Maintained and developed TNG Mini Programs within the tngd-mobile project, building responsive and interactive in-app experiences using Vue.js, TypeScript, and support on Mini Program platform</li>\n<li>Supported the full SDLC from PRD review and TSD documentation preparation through technical analysis, development, testing, and production deployment support.</li>\n<li>Supported production releases on duty and tracked security compliance using Polaris and Black Duck, performing SCA and SAST measurements to strengthen application security and release readiness</li>\n<li>Leveraged Claude Code and Cursor AI to accelerate feature development and improve implementation efficiency across the full SDLC.</li>\n<li>Contributed to a government project by supporting requirements analysis, development, testing, and delivery while working within formal project and compliance standards.</li>\n</ul>"
   },
   {
     "date": "2023-8-25",
     "title": "Frontend Developer",
     "company": "Deriv",
     "location": "Cyberjaya, Selangor",
-    "range": "Aug 2023 - Present",
+    "range": "Mar 2023 - Sep 2025",
     "url": "https://deriv.com/",
     "html": "<ul>\n<li>Developed a back-office system and enhanced the Partner website UI using OutSystems, enabling seamless event management and API integration.</li>\n<li>Developed and maintained design system components for Deriv's products.</li>\n<li>Collaborated with cross-functional teams to ensure consistency in user interfaces.</li>\n<li>Implemented responsive and user-friendly front-end interfaces using Next.js and Gatsby and React.</li>\n<li>Conducted code reviews and provided feedback to maintain code quality.</li>\n<li>Stayed updated on emerging front-end technologies and best practices.</li>\n<li>Contributed to agile development methodologies and version control systems like Git.</li>\n</ul>"
   },
