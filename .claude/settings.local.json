@@ -20,7 +20,8 @@
       "Bash(node -e \"const p = require\\('./node_modules/framer-motion/package.json'\\); console.log\\('framer-motion:', p.version\\)\")",
       "Bash(node *)",
       "mcp__docs-langchain__search_docs_by_lang_chain",
-      "mcp__docs-langchain__query_docs_filesystem_docs_by_lang_chain"
+      "mcp__docs-langchain__query_docs_filesystem_docs_by_lang_chain",
+      "mcp__github__get_file_contents"
     ]
   }
 }

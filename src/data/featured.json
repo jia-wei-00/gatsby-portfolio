@@ -23,17 +23,28 @@
     ],
     "external": "https://expense-tracker-worker.vercel.app/",
     "tech": [
-      "React Native",
-      "Expo",
-      "Supabase",
-      "Zustand",
-      "TypeScript",
-      "NativeWind",
-      "OpenAI",
+      "Next.js",
+      "LangChain",
+      "Gemini",
       "OpenRouter",
+      "Supabase",
+      "TypeScript",
+      "WhatsApp Cloud API",
       "Cloudflare Workers"
     ],
-    "html": "<p>AI agent with function calling (OpenRouter/OpenAI SDK) deployed on Supabase Deno Edge Functions. Supports multimodal input via receipt OCR, tool-dispatched CRUD operations, and a human-in-the-loop confirmation flow before any write commits to the database.</p>"
+    "html": "<p>AI agent with LangChain tool calling (OpenRouter/Gemini via OpenAI-compatible SDK) deployed on Cloudflare Workers. Supports multimodal input via WhatsApp (text, voice, photo receipts with OCR), tool-dispatched CRUD operations, and a human-in-the-loop confirmation flow (PendingActionInterrupt) before any write commits to the database.</p>"
+  },
+  {
+    "title": "Code Reviewer",
+    "github": ["https://github.com/jia-wei-00/code-reviewer"],
+    "external": "https://github.com/jia-wei-00/code-reviewer",
+    "tech": [
+      "GitHub Actions",
+      "LangChain",
+      "Gemma",
+      "TypeScript"
+    ],
+    "html": "<p>AI GitHub PR bot built as a reusable GitHub Actions workflow. On each pull request, fetches the diff, annotates it with line numbers, and sends it to Gemma via LangChain for analysis. Posts inline comments on specific flagged lines and an overall summary comment — plug in with a single workflow file and one secret.</p>"
   },
   {
     "title": "Crypthub Trader",
