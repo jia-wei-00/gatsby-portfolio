@@ -1,6 +1,6 @@
-import crypthubDemo from "../featured/crypthub/demo.png";
 import expenseTrackerDemo from "../featured/expense-tracker-ai/demo.png";
 import ragDemo from "../featured/rag-chat/demo.png";
+import codeReviewDemo from "../featured/code-reviewer/demo.png";
 import data from "./featured.json";
 
 export interface FeaturedProject {
@@ -13,9 +13,8 @@ export interface FeaturedProject {
   video?: string;
 }
 
-// Order matches featured.json: RAG Agent, Expense Tracker, Code Reviewer, Crypthub
-// TODO: add src/featured/code-reviewer/demo.png and import it for index 2
-const covers = [ragDemo, expenseTrackerDemo, crypthubDemo, crypthubDemo];
+// Order matches featured.json: RAG Agent, Expense Tracker, Code Reviewer
+const covers = [ragDemo, expenseTrackerDemo, codeReviewDemo];
 
 export const featuredProjects: FeaturedProject[] = data.map((item, i) => ({
   ...item,
