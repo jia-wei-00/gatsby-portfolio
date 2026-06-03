@@ -29,7 +29,9 @@ const About = () => (
       <h2 className="numbered-heading">About Me</h2>
     </motion.div>
     <div>
-      <StyledImage src={meImage} alt="Jia Wei" />
+      <ImageWrapper>
+        <StyledImage src={meImage} alt="Jia Wei" />
+      </ImageWrapper>
       <div>
         <Desc dangerouslySetInnerHTML={{ __html: aboutHtml }} />
         <br />
@@ -90,29 +92,50 @@ const Desc = styled.div`
   text-align: justify;
 `;
 
-const StyledImage = styled.img`
-  display: block;
+const ImageWrapper = styled.div`
+  position: relative;
   max-width: 300px;
   width: 100%;
-  border-radius: 10px;
   margin-bottom: 40px;
+
+  @media (max-width: 768px) {
+    margin: 0 auto 2.5rem;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    bottom: -15px;
+    left: -15px;
+    border: 3px solid var(--color-lighter);
+    border-radius: 25px;
+    z-index: 0;
+    opacity: 0;
+    transition: var(--transition);
+    pointer-events: none;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+`;
+
+const StyledImage = styled.img`
+  display: block;
+  width: 100%;
+  border-radius: 10px;
   aspect-ratio: 1;
   object-fit: cover;
-  outline: 0 solid;
-  outline-offset: calc(300px / -2);
   cursor: pointer;
   transition: var(--transition);
   filter: grayscale(70%);
+  position: relative;
+  z-index: 1;
 
-  &:hover {
-    outline: 3px solid var(--color-lighter);
-    outline-offset: 15px;
+  ${ImageWrapper}:hover & {
     filter: grayscale(0);
-  }
-
-  @media (max-width: 768px) {
-    left: 50%;
-    transform: translateX(-50%);
   }
 `;
 

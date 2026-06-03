@@ -13,6 +13,7 @@ interface Message {
 }
 
 const API_URL = import.meta.env.VITE_CHAT_API_URL as string;
+const API_TOKEN = import.meta.env.VITE_CHAT_API_TOKEN as string;
 
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,7 +49,7 @@ const Chatbot = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer jiawei-portfolio",
+          Authorization: `Bearer ${API_TOKEN}`,
         },
         body: JSON.stringify({ message: text, sessionId }),
       });
@@ -176,6 +177,10 @@ const Fab = styled.button<{ $open: boolean }>`
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   transition: var(--transition);
 
+  @media (max-width: 768px) {
+    bottom: 8rem;
+  }
+
   &:hover {
     transform: scale(1.1);
     background: rgba(140, 50, 210, 1);
@@ -198,10 +203,13 @@ const Panel = styled.div`
   overflow: hidden;
   animation: ${fadeIn} 0.2s ease;
 
+  @media (max-width: 768px) {
+    bottom: 12rem;
+  }
+
   @media (max-width: 480px) {
     width: calc(100vw - 2rem);
     right: 1rem;
-    bottom: 5.5rem;
   }
 `;
 
