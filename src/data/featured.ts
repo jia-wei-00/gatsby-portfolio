@@ -1,7 +1,9 @@
-import expenseTrackerDemo from "../featured/expense-tracker-ai/demo.png";
-import ragDemo from "../featured/rag-chat/demo.png";
-import codeReviewDemo from "../featured/code-reviewer/demo.png";
 import data from "./featured.json";
+
+const covers = import.meta.glob<{ default: string }>(
+  "../featured/*/demo.png",
+  { eager: true },
+);
 
 export interface FeaturedProject {
   title: string;
@@ -13,10 +15,7 @@ export interface FeaturedProject {
   video?: string;
 }
 
-// Order matches featured.json: RAG Agent, Expense Tracker, Code Reviewer
-const covers = [ragDemo, expenseTrackerDemo, codeReviewDemo];
-
-export const featuredProjects: FeaturedProject[] = data.map((item, i) => ({
+export const featuredProjects: FeaturedProject[] = data.map((item) => ({
   ...item,
-  cover: covers[i],
+  cover: covers[item.cover]?.default ?? "",
 }));

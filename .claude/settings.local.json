@@ -21,7 +21,14 @@
       "Bash(node *)",
       "mcp__docs-langchain__search_docs_by_lang_chain",
       "mcp__docs-langchain__query_docs_filesystem_docs_by_lang_chain",
-      "mcp__github__get_file_contents"
+      "mcp__github__get_file_contents",
+      "Bash(rm src/jobs/topclick.md src/jobs/wtech.md src/jobs/besquare.md src/jobs/deriv.md src/jobs/tngd.md src/about/about-description.md src/featured/crypthub/index.md src/featured/gamefi/index.md src/featured/tridemic/index.md src/featured/expense-tracker-ai/index.md src/projects/amazon-clone.md src/projects/coin-watch.md src/projects/linkedin-clone.md src/projects/movie-search-engine.md src/projects/react-calculator.md src/projects/tesla-clone.md src/projects/todo-app-react.md)",
+      "Bash(rmdir src/jobs)",
+      "Bash(mkdir -p src/projects/crypthub src/projects/gamefi src/projects/tridemic)",
+      "Bash(mv src/featured/crypthub/demo.png src/projects/crypthub/demo.png)",
+      "Bash(mv src/featured/gamefi/demo.png src/projects/gamefi/demo.png)",
+      "Bash(mv src/featured/tridemic/demo.png src/projects/tridemic/demo.png)",
+      "Bash(rmdir src/featured/crypthub src/featured/gamefi src/featured/tridemic)"
     ]
   }
 }
