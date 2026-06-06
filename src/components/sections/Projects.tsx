@@ -13,34 +13,45 @@ const Projects = () => {
     <Container className="container">
       <h3>More Projects</h3>
       <ProjectContainer>
-        {projects.slice(0, show ? 999 : 6).map(({ title, github, external, tech, video, html }, i) => (
-          <Box
-            as={motion.div}
-            key={i}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="info">
-              <h3>{title}</h3>
-              <div dangerouslySetInnerHTML={{ __html: html }} />
-              <ul className="tech">
-                {tech.map((t, j) => (
-                  <li key={j}>{t}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="icon">
-              <a href={github && github.length > 0 ? github[0] : video} target="__blank">
-                {github && github.length > 0 ? <GitHubIcon /> : <YouTubeIcon />}
-              </a>
-              <a href={external} target="__blank">
-                <OpenInNewIcon />
-              </a>
-            </div>
-          </Box>
-        ))}
+        {projects
+          .slice(0, show ? 999 : 6)
+          .map(({ title, github, external, tech, video, html }, i) => (
+            <Box
+              as={motion.div}
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="project-container">
+                <h3>{title}</h3>
+                <div className="info">
+                  <div dangerouslySetInnerHTML={{ __html: html }} />
+                  <ul className="tech">
+                    {tech.map((t, j) => (
+                      <li key={j}>{t}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <div className="icon">
+                <a
+                  href={github && github.length > 0 ? github[0] : video}
+                  target="__blank"
+                >
+                  {github && github.length > 0 ? (
+                    <GitHubIcon />
+                  ) : (
+                    <YouTubeIcon />
+                  )}
+                </a>
+                <a href={external} target="__blank">
+                  <OpenInNewIcon />
+                </a>
+              </div>
+            </Box>
+          ))}
       </ProjectContainer>
       <button className="btn" onClick={() => setShow(!show)}>
         Show {show ? "Less" : "More"}
@@ -67,16 +78,22 @@ const Box = styled.div`
   align-items: flex-end;
   transition: var(--transition);
 
+  .project-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
   &:hover {
     transform: translateY(-5px) !important;
   }
 
   .info {
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: space-between;
+    flex: 1;
+    min-height: 0;
 
     & > div {
       padding: 30px 0;

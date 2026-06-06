@@ -1,22 +1,7 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { aboutHtml } from "../../data/about";
+import { aboutHtml, skills } from "../../data/about";
 import meImage from "../../about/me.jpg";
-
-const skills = [
-  "Openai SDK",
-  "Vercel AI SDK",
-  "Typescript",
-  "React",
-  "React Native",
-  "Vue",
-  "Zustand",
-  "Tanstack Query",
-  "Pinia",
-  "Firebase",
-  "Supabase",
-  "Scss",
-];
 
 const About = () => (
   <Container className="container">

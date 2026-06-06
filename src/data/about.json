@@ -1,3 +1,17 @@
 {
-  "html": "<p>Hi I'm Jia Wei, a software developer passionate about building great user experiences. I can turn a design into a real working website with responsive design.<br /><br /></p>\n<p>Recently I've been building AI-powered systems — including a RAG agent backed by Supabase pgvector and LangGraph deployed on Cloudflare Workers, and an AI expense agent with multimodal function calling and human-in-the-loop flows. I'm interested in the full applied AI stack: retrieval, agent orchestration, observability, and reliability.<br /><br /></p>\n<p>I graduated from <a class=\"link\" href=\"https://www.uum.edu.my/\" target=\"_blank\">Universiti Utara Malaysia</a> with a degree in Bachelor of Science (Multimedia).<br /><br /></p>\n<p>I am a positive thinker, and I think this helps me the most in difficult moments.</p>"
+  "html": "<p>Hi I'm Jia Wei, a software developer passionate about building great user experiences. I can turn a design into a real working website with responsive design.<br /><br /></p>\n<p>Recently I've been building AI-powered systems — including a RAG agent backed by Supabase pgvector and LangGraph deployed on Cloudflare Workers, and an AI expense agent with multimodal function calling and human-in-the-loop flows. I'm interested in the full applied AI stack: retrieval, agent orchestration, observability, and reliability.<br /><br /></p>\n<p>I graduated from <a class=\"link\" href=\"https://www.uum.edu.my/\" target=\"_blank\">Universiti Utara Malaysia</a> with a degree in Bachelor of Science (Multimedia).<br /><br /></p>\n<p>I am a positive thinker, and I think this helps me the most in difficult moments.</p>",
+  "skills": [
+    "OpenAI SDK",
+    "Vercel AI SDK",
+    "LangChain",
+    "TypeScript",
+    "React",
+    "React Native",
+    "Vue",
+    "Zustand",
+    "Tanstack Query",
+    "Pinia",
+    "Firebase",
+    "Supabase"
+  ]
 }
