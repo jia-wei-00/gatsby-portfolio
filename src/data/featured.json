@@ -1,6 +1,7 @@
 [
   {
     "title": "Portfolio RAG Agent",
+    "cover": "../featured/rag-chat/demo.png",
     "github": ["https://github.com/jia-wei-00/portfolio-chat-bot-worker"],
     "external": "https://jia-wei.site",
     "tech": [
@@ -17,6 +18,7 @@
   },
   {
     "title": "Expenses Tracker (AI Assistant)",
+    "cover": "../featured/expense-tracker-ai/demo.png",
     "github": [
       "https://github.com/jia-wei-00/expense-tracker-worker",
       "https://github.com/jia-wei-00/expense-tracker"
@@ -36,6 +38,7 @@
   },
   {
     "title": "Code Reviewer",
+    "cover": "../featured/code-reviewer/demo.png",
     "github": ["https://github.com/jia-wei-00/code-reviewer"],
     "external": "https://github.com/jia-wei-00/gatsby-portfolio/pull/1",
     "tech": [
