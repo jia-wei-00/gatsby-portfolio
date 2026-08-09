@@ -1,6 +1,6 @@
 # Jia Wei — Portfolio
 
-Personal portfolio website built with React, TypeScript, and Vite. Features a floating AI chatbot powered by a LangChain backend.
+Personal portfolio website built with React, TypeScript, and Vite. Features a floating streaming chatbot powered by an OpenAI Agents SDK backend.
 
 ## Tech Stack
 
@@ -11,7 +11,7 @@ Personal portfolio website built with React, TypeScript, and Vite. Features a fl
 - **MUI v7** — icons and UI components
 - **react-scroll-section** — scroll-based section navigation
 - **react-markdown** — markdown rendering in chatbot
-- **usehooks-ts** — `useSessionStorage` for chatbot session persistence
+- **Vercel AI SDK** — streaming chat state and UI-message transport
 - **Vercel Analytics** — usage analytics
 
 ## Getting Started
@@ -29,7 +29,7 @@ npm install
 
 ### Environment Variables
 
-Copy `.env.example` to `.env` and fill in your values:
+The chatbot defaults to the local agent endpoint. Copy `.env.example` to `.env` when you want to override it:
 
 ```bash
 cp .env.example .env
@@ -37,7 +37,7 @@ cp .env.example .env
 
 | Variable | Description |
 |---|---|
-| `VITE_CHAT_API_URL` | URL of the LangChain chat API endpoint |
+| `VITE_CHAT_API_URL` | Optional agent API URL; defaults to `http://127.0.0.1:8787/api/agent` |
 
 ### Development
 
@@ -83,9 +83,11 @@ src/
 
 ## Chatbot
 
-The floating chatbot (bottom-right) connects to a LangChain backend. It uses session-based memory via `sessionStorage` so conversation history persists across page refreshes within the same tab.
+The floating chatbot (bottom-right) connects to an OpenAI Agents SDK backend through Vercel AI SDK's `useChat` transport. The API accepts the latest user text as `{ "message": string }` and returns a stream created with `createAiSdkUiMessageStreamResponse` from `@openai/agents-extensions/ai-sdk-ui`.
 
-Set `VITE_CHAT_API_URL` in your `.env` for local development, and add it as an environment variable in your Vercel project settings for production.
+Assistant text is rendered as it streams. Conversation history is kept in memory for the current page; refreshing starts a new conversation.
+
+The local endpoint is used automatically during development. Set `VITE_CHAT_API_URL` in your Vercel project settings when the production agent is deployed.
 
 ## Deployment
 

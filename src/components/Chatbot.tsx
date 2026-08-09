@@ -1,78 +1,96 @@
 import { useState, useRef, useEffect } from "react";
-import { useSessionStorage } from "usehooks-ts";
+import { useChat } from "@ai-sdk/react";
+import { DefaultChatTransport, type UIMessage } from "ai";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import styled, { keyframes } from "styled-components";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import CloseIcon from "@mui/icons-material/Close";
 import SendIcon from "@mui/icons-material/Send";
 
+const LOCAL_CHAT_API_URL = "http://127.0.0.1:8787/api/agent";
+const API_URL = import.meta.env.VITE_CHAT_API_URL || LOCAL_CHAT_API_URL;
 
-interface Message {
-  role: "user" | "assistant";
-  content: string;
-}
+const getMessageText = (message: UIMessage) =>
+  message.parts
+    .filter((part) => part.type === "text")
+    .map((part) => part.text)
+    .join("");
 
-const API_URL = import.meta.env.VITE_CHAT_API_URL as string;
-const API_TOKEN = import.meta.env.VITE_CHAT_API_TOKEN as string;
+const chatTransport = new DefaultChatTransport({
+  api: API_URL,
+  prepareSendMessagesRequest: ({ messages }) => {
+    const latestUserMessage = messages.findLast(
+      (message) => message.role === "user",
+    );
+
+    return {
+      body: {
+        message: latestUserMessage ? getMessageText(latestUserMessage) : "",
+      },
+    };
+  },
+});
 
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [sessionId, setSessionId] = useSessionStorage<string | null>(
-    "chat_session_id",
-    null,
-  );
+  const {
+    messages,
+    setMessages,
+    sendMessage: sendChatMessage,
+    status,
+    error,
+  } = useChat({ transport: chatTransport });
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const pendingInputRef = useRef<string | null>(null);
+  const isBusy = status === "submitted" || status === "streaming";
+  const lastMessage = messages[messages.length - 1];
+  const lastMessageHasAssistantText =
+    lastMessage?.role === "assistant" &&
+    lastMessage.parts.some(
+      (part) => part.type === "text" && part.text.length > 0,
+    );
+  const showTypingIndicator = isBusy && !lastMessageHasAssistantText;
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, isLoading]);
+  }, [messages, status, error]);
 
   useEffect(() => {
     if (isOpen) inputRef.current?.focus();
   }, [isOpen]);
 
-  const sendMessage = async () => {
-    const text = input.trim();
-    if (!text || isLoading) return;
-
-    const userMessage: Message = { role: "user", content: text };
-    setMessages((prev) => [...prev, userMessage]);
-    setInput("");
-    setIsLoading(true);
-
-    try {
-      const res = await fetch(API_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${API_TOKEN}`,
-        },
-        body: JSON.stringify({ message: text, sessionId }),
+  useEffect(() => {
+    if (status === "error" && pendingInputRef.current) {
+      const pendingInput = pendingInputRef.current;
+      setMessages((currentMessages) => {
+        const finalMessage = currentMessages[currentMessages.length - 1];
+        return finalMessage?.role === "user"
+          ? currentMessages.slice(0, -1)
+          : currentMessages;
       });
-
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
-      const data = await res.json();
-      setSessionId(data.sessionId);
-      setMessages((prev) => [
-        ...prev,
-        { role: "assistant", content: data.text },
-      ]);
-    } catch (err) {
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "assistant",
-          content: `Error: ${err instanceof Error ? err.message : "Failed to reach the API"}`,
-        },
-      ]);
-    } finally {
-      setIsLoading(false);
+      setInput((currentInput) => currentInput || pendingInput);
+      pendingInputRef.current = null;
+    } else if (status === "ready") {
+      pendingInputRef.current = null;
     }
+  }, [setMessages, status]);
+
+  const sendMessage = () => {
+    const text = input.trim();
+    if (!text || isBusy) return;
+
+    pendingInputRef.current = text;
+    setInput("");
+    void sendChatMessage({ text }).catch(() => {
+      const pendingInput = pendingInputRef.current;
+      if (pendingInput) {
+        setInput((currentInput) => currentInput || pendingInput);
+        pendingInputRef.current = null;
+      }
+    });
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -97,25 +115,37 @@ const Chatbot = () => {
             {messages.length === 0 && (
               <EmptyState>Ask me anything about Jia Wei!</EmptyState>
             )}
-            {messages.map((msg, i) => (
-              <Bubble key={i} $role={msg.role}>
-                {msg.role === "assistant" ? (
-                  <ReactMarkdown>{msg.content}</ReactMarkdown>
-                ) : (
-                  msg.content
-                )}
-              </Bubble>
-            ))}
-            {isLoading &&
-              messages[messages.length - 1]?.role !== "assistant" && (
-                <Bubble $role="assistant">
-                  <TypingDots>
-                    <span />
-                    <span />
-                    <span />
-                  </TypingDots>
+            {messages.map((message) => {
+              if (message.role === "system") return null;
+
+              const text = getMessageText(message);
+
+              if (!text) return null;
+
+              return (
+                <Bubble key={message.id} $role={message.role}>
+                  {message.role === "assistant" ? (
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                      {text}
+                    </ReactMarkdown>
+                  ) : (
+                    text
+                  )}
                 </Bubble>
-              )}
+              );
+            })}
+            {showTypingIndicator && (
+              <Bubble $role="assistant">
+                <TypingDots>
+                  <span />
+                  <span />
+                  <span />
+                </TypingDots>
+              </Bubble>
+            )}
+            {error && (
+              <Bubble $role="assistant">Error: {error.message}</Bubble>
+            )}
             <div ref={messagesEndRef} />
           </Messages>
 
@@ -127,11 +157,11 @@ const Chatbot = () => {
               onKeyDown={handleKeyDown}
               placeholder="Type a message… (Enter to send)"
               rows={1}
-              disabled={isLoading}
+              disabled={isBusy}
             />
             <SendBtn
               onClick={sendMessage}
-              disabled={!input.trim() || isLoading}
+              disabled={!input.trim() || isBusy}
             >
               <SendIcon fontSize="small" />
             </SendBtn>
@@ -305,6 +335,24 @@ const Bubble = styled.div<{ $role: "user" | "assistant" }>`
   a {
     color: rgba(180, 130, 255, 1);
     text-decoration: underline;
+  }
+  table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+    margin: 6px 0;
+  }
+  th,
+  td {
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    padding: 6px 8px;
+    text-align: left;
+    white-space: nowrap;
+  }
+  th {
+    background: rgba(255, 255, 255, 0.07);
+    font-weight: 600;
   }
   code {
     background: rgba(0, 0, 0, 0.3);
