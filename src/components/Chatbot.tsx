@@ -17,19 +17,60 @@ const getMessageText = (message: UIMessage) =>
     .map((part) => part.text)
     .join("");
 
+type AgentModelItem =
+  | {
+      type: "message";
+      role: "user";
+      content: Array<{ type: "input_text"; text: string }>;
+    }
+  | {
+      type: "message";
+      role: "assistant";
+      status: "completed";
+      content: Array<{ type: "output_text"; text: string }>;
+    }
+  | {
+      type: "message";
+      role: "system";
+      content: string;
+    };
+
+const toAgentModelItems = (messages: UIMessage[]): AgentModelItem[] =>
+  messages.flatMap<AgentModelItem>((message): AgentModelItem[] => {
+    const text = getMessageText(message);
+
+    if (!text.trim()) return [];
+
+    switch (message.role) {
+      case "user":
+        return [
+          {
+            type: "message",
+            role: "user",
+            content: [{ type: "input_text", text }],
+          },
+        ];
+      case "assistant":
+        return [
+          {
+            type: "message",
+            role: "assistant",
+            status: "completed",
+            content: [{ type: "output_text", text }],
+          },
+        ];
+      case "system":
+        return [{ type: "message", role: "system", content: text }];
+      default:
+        return [];
+    }
+  });
+
 const chatTransport = new DefaultChatTransport({
   api: API_URL,
-  prepareSendMessagesRequest: ({ messages }) => {
-    const latestUserMessage = messages.findLast(
-      (message) => message.role === "user",
-    );
-
-    return {
-      body: {
-        message: latestUserMessage ? getMessageText(latestUserMessage) : "",
-      },
-    };
-  },
+  prepareSendMessagesRequest: ({ messages }) => ({
+    body: toAgentModelItems(messages),
+  }),
 });
 
 const Chatbot = () => {

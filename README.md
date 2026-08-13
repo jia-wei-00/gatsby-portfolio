@@ -83,7 +83,7 @@ src/
 
 ## Chatbot
 
-The floating chatbot (bottom-right) connects to an OpenAI Agents SDK backend through Vercel AI SDK's `useChat` transport. The API accepts the latest user text as `{ "message": string }` and returns a stream created with `createAiSdkUiMessageStreamResponse` from `@openai/agents-extensions/ai-sdk-ui`.
+The floating chatbot (bottom-right) connects to an OpenAI Agents SDK backend through Vercel AI SDK's `useChat` transport. Before each request, the current AI SDK `UIMessage[]` history is converted into a raw OpenAI Agents SDK `ModelItem[]` JSON body. Text parts become `input_text` for user messages and `output_text` for completed assistant messages. The API returns a stream created with `createAiSdkUiMessageStreamResponse` from `@openai/agents-extensions/ai-sdk-ui`.
 
 Assistant text is rendered as it streams. Conversation history is kept in memory for the current page; refreshing starts a new conversation.
 
